@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IHRAZ Brand Guidelines — Premium Brand Bible</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #050505;
+      --deep: #0A0A0A;
+      --surface: #111111;
+      --border: #1A1A1A;
+      --muted: #3A3A3A;
+      --text-dim: #666666;
+      --text-mid: #999999;
+      --text-light: #CCCCCC;
+      --white: #F5F5F0;
+      --emerald-900: #022C22;
+      --emerald-800: #064E3B;
+      --emerald-700: #047857;
+      --emerald-600: #059669;
+      --emerald-500: #10B981;
+      --emerald-400: #34D399;
+      --emerald-300: #6EE7B7;
+      --emerald-200: #A7F3D0;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Space Grotesk', 'Inter', sans-serif;
+      --font-arabic: 'Cairo', 'Noto Sans Arabic', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--black) 0%, var(--deep) 50%, var(--black) 100%);
+      color: var(--text-light);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ============ UTILITY CLASSES ============ */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section {
+      padding: 120px 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    /* ============ TYPOGRAPHY ============ */
+    h1 {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 1.5rem;
+      color: var(--white);
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--emerald-300);
+    }
+
+    .subtitle {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .caption {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ============ HERO/COVER ============ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 4rem 2rem;
+    }
+
+    .particle-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .mark-large {
+      width: 280px;
+      height: 280px;
+      margin: 0 auto 3rem;
+      filter: drop-shadow(0 0 40px rgba(16, 185, 129, 0.3));
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-accent {
+      font-family: var(--font-arabic);
+      font-size: 2.5rem;
+      color: var(--emerald-400);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.2rem;
+      color: var(--text-mid);
+      margin-bottom: 2rem;
+    }
+
+    .version-tag {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    /* ============ PARTICLE ANIMATION ============ */
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--emerald-400);
+      border-radius: 50%;
+      animation: float linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.6;
+      }
+      90% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+      }
+    }
+
+    /* ============ COLOR SWATCHES ============ */
+    .color-swatch {
+      border-radius: 12px;
+      padding: 1.5rem;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .color-swatch:hover {
+      border-color: var(--emerald-400);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.2), inset 0 0 20px rgba(16, 185, 129, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .swatch-preview {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+    }
+
+    .swatch-info {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+    }
+
+    .swatch-name {
+      color: var(--white);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .swatch-hex {
+      color: var(--text-dim);
+      font-family: 'Monaco', monospace;
+      font-size: 0.8rem;
+    }
+
+    /* ============ TYPOGRAPHY SPECIMENS ============ */
+    .type-specimen {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .type-weight {
+      margin-bottom: 2rem;
+    }
+
+    .type-weight:last-child {
+      margin-bottom: 0;
+    }
+
+    .weight-label {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .specimen-text {
+      font-size: 2rem;
+      letter-spacing: -0.5px;
+      line-height: 1.4;
+    }
+
+    /* ============ LOGO SHOWCASE ============ */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .logo-display {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 250px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .logo-display:hover {
+      border-color: var(--emerald-400);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+    }
+
+    .logo-display.light {
+      background: #F8F8F6;
+    }
+
+    .logo-display.emerald {
+      background: var(--emerald-700);
+    }
+
+    .logo-display canvas {
+      max-width: 100%;
+      max-height: 150px;
+      margin-bottom: 1rem;
+    }
+
+    .logo-label {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ============ CARDS & BOXES ============ */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--emerald-400);
+      background: rgba(16, 185, 129, 0.03);
+    }
+
+    .card h4 {
+      color: var(--emerald-300);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ============ DO'S AND DON'TS ============ */
+    .do-dont-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .do-box, .dont-box {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      background: var(--surface);
+    }
+
+    .do-box {
+      border-left: 4px solid var(--emerald-400);
+    }
+
+    .dont-box {
+      border-left: 4px solid #EF4444;
+    }
+
+    .do-box h4 {
+      color: var(--emerald-400);
+      margin-bottom: 1rem;
+    }
+
+    .dont-box h4 {
+      color: #FCA5A5;
+      margin-bottom: 1rem;
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+      margin-top: 6rem;
+    }
+
+    .footer-content {
+      text-align: center;
+      color: var(--text-mid);
+    }
+
+    .footer-content p {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-accent {
+      color: var(--emerald-400);
+      font-family: var(--font-display);
+      font-weight: 600;
+    }
+
+    /* ============ SECTION NUMBERS ============ */
+    .section-number {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--emerald-400);
+      opacity: 0.4;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 768px) {
+      .grid-2, .grid-3, .grid-4, .logo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HERO/COVER SECTION ============ -->
+  <section class="hero">
+    <div class="particle-bg" id="particleContainer"></div>
+
+    <div class="hero-content">
+      <canvas id="heroMark" class="mark-large" width="280" height="280"></canvas>
+
+      <h1>IHRAZ</h1>
+      <div class="hero-accent">إحراز</div>
+      <div class="hero-tagline">Premium Brand Guidelines</div>
+
+      <span class="version-tag">Version 1.0 — March 2026</span>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 01: BRAND STORY ============ -->
+  <section class="section" id="section-01">
+    <div class="container">
+      <div class="section-number">01</div>
+
+      <h2>Brand Story</h2>
+      <p class="subtitle">Defining the identity behind IHRAZ</p>
+
+      <div class="grid-2" style="margin-top: 3rem;">
+        <div>
+          <h3>Origin</h3>
+          <p style="color: var(--text-light); font-size: 1.05rem; line-height: 1.8;">
+            <strong>IHRAZ</strong> (إحراز) is an Arabic word meaning "to achieve, to attain, to score." It represents the fundamental human drive to accomplish meaningful goals and transform ambitions into reality.
+          </p>
+        </div>
+
+        <div>
+          <h3>Mission</h3>
+          <p style="color: var(--text-light); font-size: 1.05rem; line-height: 1.8;">
+            AI-Powered Enterprise Performance Platform that empowers organizations to set, execute, and measure goals with unprecedented clarity and intelligence.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 3rem;">
+        <div>
+          <h3>Vision</h3>
+          <p style="color: var(--text-light); font-size: 1.05rem; line-height: 1.8;">
+            Making every organization's goals achievable through intelligent automation, predictive analytics, and seamless performance management orchestration.
+          </p>
+        </div>
+
+        <div>
+          <h3>Positioning</h3>
+          <p style="color: var(--text-light); font-size: 1.05rem; line-height: 1.8;">
+            <span style="color: var(--emerald-300); font-weight: 600;">Saudi Born · Globally Engineered</span><br><br>
+            A premium performance platform designed with Middle Eastern expertise, built with world-class engineering, deployed globally.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem; padding: 2rem; background: rgba(16, 185, 129, 0.05); border: 1px solid var(--emerald-600); border-radius: 12px;">
+        <h3 style="margin-bottom: 1.5rem;">Platform Architecture</h3>
+        <div class="grid-2" style="gap: 2rem;">
+          <div>
+            <p style="color: var(--text-light); margin-bottom: 0.5rem;"><strong style="color: var(--emerald-300);">PMO Hub Module</strong></p>
+            <p style="color: var(--text-mid); font-size: 0.95rem;">
+              Comprehensive project portfolio orchestration, resource management, and enterprise roadmap alignment.
+            </p>
+          </div>
+          <div>
+            <p style="color: var(--text-light); margin-bottom: 0.5rem;"><strong style="color: var(--emerald-300);">KPI Dashboard Module</strong></p>
+            <p style="color: var(--text-mid); font-size: 0.95rem;">
+              Real-time key performance indicator tracking, executive intelligence dashboards, and predictive analytics.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 02: THE CONVERGENCE MARK ============ -->
+  <section class="section" id="section-02">
+    <div class="container">
+      <div class="section-number">02</div>
+
+      <h2>The Convergence Mark</h2>
+      <p class="subtitle">Visual symbol of intelligent achievement through unified intelligence streams</p>
+
+      <div style="margin-top: 4rem;">
+        <canvas id="convergenceMark" width="600" height="400" style="width: 100%; max-width: 600px; margin: 0 auto 3rem; display: block; filter: drop-shadow(0 0 30px rgba(16, 185, 129, 0.2));"></canvas>
+      </div>
+
+      <div class="grid-2" style="margin-top: 4rem;">
+        <div class="card">
+          <h4>Concept</h4>
+          <p>The Convergence Mark represents five streams of AI intelligence converging at a singular point of achievement. Each arc symbolizes a different intelligence stream—data analysis, predictive modeling, resource optimization, goal alignment, and performance measurement—all flowing together to enable organizational success.</p>
+        </div>
+
+        <div class="card">
+          <h4>Construction</h4>
+          <p>The mark is mathematically constructed from five Bézier curves with precise control points, creating a harmonious convergence. A central apex point with radiating glow represents the moment of achievement. Nodes along each arc symbolize data intersection points.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 3rem; padding: 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px;">
+        <h3>Usage Guidelines</h3>
+
+        <div class="grid-2" style="margin-top: 2rem; gap: 2rem;">
+          <div>
+            <h4 style="color: var(--emerald-300); margin-bottom: 1rem;">✓ DO</h4>
+            <ul style="color: var(--text-light); font-size: 0.95rem; line-height: 1.8;">
+              <li>✓ Use on dark backgrounds (dark theme preferred)</li>
+              <li>✓ Maintain clear space (minimum 40px on all sides)</li>
+              <li>✓ Use official emerald colors only</li>
+              <li>✓ Scale proportionally to any size</li>
+              <li>✓ Allow breathing room in layouts</li>
+              <li>✓ Ensure minimum 24px display width</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="color: #FCA5A5; margin-bottom: 1rem;">✗ DON'T</h4>
+            <ul style="color: var(--text-light); font-size: 0.95rem; line-height: 1.8;">
+              <li>✗ Rotate or distort the mark</li>
+              <li>✗ Change color values or apply effects</li>
+              <li>✗ Place on competing busy backgrounds</li>
+              <li>✗ Use drop shadows or outer glows</li>
+              <li>✗ Reshape or simplify the arcs</li>
+              <li>✗ Apply gradients beyond the built-in rendering</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+          <p style="color: var(--text-mid); font-size: 0.9rem;"><strong>Minimum Clear Space:</strong> The mark requires a minimum buffer of 40 pixels on all sides. No other design elements should intrude into this space.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 03: LOGO SYSTEM ============ -->
+  <section class="section" id="section-03">
+    <div class="container">
+      <div class="section-number">03</div>
+
+      <h2>Logo System</h2>
+      <p class="subtitle">Complete visual identity applications across all backgrounds</p>
+
+      <div style="margin-top: 3rem;">
+        <h3 style="margin-bottom: 2rem;">Primary Lockup (Dark Background)</h3>
+        <div class="logo-grid">
+          <div class="logo-display">
+            <canvas id="logo1" width="280" height="280" style="max-height:180px;"></canvas>
+            <div class="logo-label">Full Lockup</div>
+          </div>
+          <div class="logo-display">
+            <canvas id="logo2" width="280" height="280" style="max-height:180px;"></canvas>
+            <div class="logo-label">Stacked</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Alternate Backgrounds</h3>
+        <div class="logo-grid">
+          <div class="logo-display light">
+            <canvas id="logo3" width="280" height="280" style="max-height:180px;"></canvas>
+            <div class="logo-label">Light Background</div>
+          </div>
+          <div class="logo-display emerald">
+            <canvas id="logo4" width="280" height="280" style="max-height:180px;"></canvas>
+            <div class="logo-label">Emerald Background</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Standalone Applications</h3>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          <div class="logo-display">
+            <canvas id="logo5" width="100" height="100"></canvas>
+            <div class="logo-label">Mark Only</div>
+          </div>
+          <div class="logo-display light">
+            <canvas id="logo6" width="100" height="100"></canvas>
+            <div class="logo-label">Mark (Light)</div>
+          </div>
+          <div class="logo-display emerald">
+            <canvas id="logo7" width="100" height="100"></canvas>
+            <div class="logo-label">Mark (Emerald)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 04: COLOR PALETTE ============ -->
+  <section class="section" id="section-04">
+    <div class="container">
+      <div class="section-number">04</div>
+
+      <h2>Color Palette</h2>
+      <p class="subtitle">Carefully curated spectrum supporting premium dark theme aesthetic</p>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Primary Dark Neutrals</h3>
+        <div class="grid-3">
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--black);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Void</div>
+              <div class="swatch-hex">#050505</div>
+              <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 0.5rem;">Deepest blacks, primary background</p>
+            </div>
+          </div>
+
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--deep);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Deep</div>
+              <div class="swatch-hex">#0A0A0A</div>
+              <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 0.5rem;">Gradient layers, subtle depth</p>
+            </div>
+          </div>
+
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--surface);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Surface</div>
+              <div class="swatch-hex">#111111</div>
+              <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 0.5rem;">Cards, panels, elevated surfaces</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Emerald Spectrum</h3>
+        <div class="grid-4">
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--emerald-900);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Emerald 900</div>
+              <div class="swatch-hex">#022C22</div>
+            </div>
+          </div>
+
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--emerald-800);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Emerald 800</div>
+              <div class="swatch-hex">#064E3B</div>
+            </div>
+          </div>
+
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--emerald-700);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Emerald 700</div>
+              <div class="swatch-hex">#047857</div>
+            </div>
+          </div>
+
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--emerald-600);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Emerald 600</div>
+              <div class="swatch-hex">#059669</div>
+            </div>
+          </div>
+
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--emerald-500);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Emerald 500</div>
+              <div class="swatch-hex">#10B981</div>
+            </div>
+          </div>
+
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--emerald-400);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Emerald 400</div>
+              <div class="swatch-hex">#34D399</div>
+            </div>
+          </div>
+
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--emerald-300);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Emerald 300</div>
+              <div class="swatch-hex">#6EE7B7</div>
+            </div>
+          </div>
+
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--emerald-200);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Emerald 200</div>
+              <div class="swatch-hex">#A7F3D0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Neutral Text & Borders</h3>
+        <div class="grid-3">
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--border);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Border</div>
+              <div class="swatch-hex">#1A1A1A</div>
+            </div>
+          </div>
+
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--muted);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Muted</div>
+              <div class="swatch-hex">#3A3A3A</div>
+            </div>
+          </div>
+
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--text-dim);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Text Dim</div>
+              <div class="swatch-hex">#666666</div>
+            </div>
+          </div>
+
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--text-mid);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Text Mid</div>
+              <div class="swatch-hex">#999999</div>
+            </div>
+          </div>
+
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--text-light);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Text Light</div>
+              <div class="swatch-hex">#CCCCCC</div>
+            </div>
+          </div>
+
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background: var(--white); border: 1px solid var(--border);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">White</div>
+              <div class="swatch-hex">#F5F5F0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem; padding: 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px;">
+        <h3 style="margin-bottom: 1.5rem;">Color Usage Rules</h3>
+        <div class="grid-2" style="gap: 2rem;">
+          <div>
+            <p style="color: var(--text-light); margin-bottom: 1rem;"><strong>Dark Neutrals (Void, Deep, Surface)</strong><br><span style="color: var(--text-dim); font-size: 0.9rem;">Primary backgrounds, layering, depth creation. Establish visual hierarchy and containment.</span></p>
+
+            <p style="color: var(--text-light); margin-bottom: 1rem;"><strong>Emerald Spectrum</strong><br><span style="color: var(--text-dim); font-size: 0.9rem;">Brand accent color. Use Emerald 400-300 for interactive elements, Emerald 600-700 for backgrounds.</span></p>
+          </div>
+
+          <div>
+            <p style="color: var(--text-light); margin-bottom: 1rem;"><strong>Text & Borders</strong><br><span style="color: var(--text-dim); font-size: 0.9rem;">Use Text Mid for secondary content, Text Light for primary. Border color for dividers and subtle edges.</span></p>
+
+            <p style="color: var(--text-light); margin-bottom: 1rem;"><strong>Contrast & Accessibility</strong><br><span style="color: var(--text-dim); font-size: 0.9rem;">All text meets WCAG AA minimum contrast. Emerald 300 text on dark backgrounds achieves 4.5:1 contrast.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 05: TYPOGRAPHY ============ -->
+  <section class="section" id="section-05">
+    <div class="container">
+      <div class="section-number">05</div>
+
+      <h2>Typography</h2>
+      <p class="subtitle">Carefully selected typefaces creating hierarchy and character</p>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Display Font: Syne</h3>
+        <p style="color: var(--text-light); margin-bottom: 2rem;">Bold, modern display typeface used for headlines, section titles, and emphasis. Available in weights 400–800.</p>
+
+        <div class="type-specimen">
+          <div class="type-weight">
+            <div class="weight-label">Weight 400 (Regular)</div>
+            <div class="specimen-text" style="font-family: var(--font-display); font-weight: 400;">The Quick Brown Fox Jumps Over Lazy Dog</div>
+          </div>
+
+          <div class="type-weight">
+            <div class="weight-label">Weight 600 (Semibold)</div>
+            <div class="specimen-text" style="font-family: var(--font-display); font-weight: 600;">The Quick Brown Fox Jumps Over Lazy Dog</div>
+          </div>
+
+          <div class="type-weight">
+            <div class="weight-label">Weight 800 (Extrabold)</div>
+            <div class="specimen-text" style="font-family: var(--font-display); font-weight: 800;">The Quick Brown Fox Jumps Over Lazy Dog</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Arabic Font: Cairo</h3>
+        <p style="color: var(--text-light); margin-bottom: 2rem;">Premium Arabic typeface supporting full script coverage. Weight 900 preferred for brand applications.</p>
+
+        <div class="type-specimen">
+          <div class="type-weight">
+            <div class="weight-label">Weight 700 (Bold)</div>
+            <div class="specimen-text" style="font-family: var(--font-arabic); font-weight: 700;">إحراز · تحقيق الأهداف · النجاح المقاس</div>
+          </div>
+
+          <div class="type-weight">
+            <div class="weight-label">Weight 900 (Heavy)</div>
+            <div class="specimen-text" style="font-family: var(--font-arabic); font-weight: 900;">إحراز · تحقيق الأهداف · النجاح المقاس</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Body Font: Space Grotesk</h3>
+        <p style="color: var(--text-light); margin-bottom: 2rem;">Geometric sans-serif for body text, UI elements, and secondary content. Weights 300–700 for varied emphasis.</p>
+
+        <div class="type-specimen">
+          <div class="type-weight">
+            <div class="weight-label">Weight 300 (Light)</div>
+            <div class="specimen-text" style="font-family: var(--font-body); font-weight: 300; font-size: 1.5rem;">The Quick Brown Fox Jumps Over Lazy Dog · Designed for readability and modern aesthetics</div>
+          </div>
+
+          <div class="type-weight">
+            <div class="weight-label">Weight 500 (Medium)</div>
+            <div class="specimen-text" style="font-family: var(--font-body); font-weight: 500; font-size: 1.5rem;">The Quick Brown Fox Jumps Over Lazy Dog · Designed for readability and modern aesthetics</div>
+          </div>
+
+          <div class="type-weight">
+            <div class="weight-label">Weight 700 (Bold)</div>
+            <div class="specimen-text" style="font-family: var(--font-body); font-weight: 700; font-size: 1.5rem;">The Quick Brown Fox Jumps Over Lazy Dog · Designed for readability and modern aesthetics</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">UI Font: Inter</h3>
+        <p style="color: var(--text-light); margin-bottom: 2rem;">Minimal sans-serif optimized for small sizes, UI labels, and technical text. Weights 200–500.</p>
+
+        <div class="type-specimen">
+          <div class="type-weight">
+            <div class="weight-label">Weight 400 (Regular)</div>
+            <div class="specimen-text" style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 1.5rem;">Button Label · Navigation · Table Headers · Captions</div>
+          </div>
+
+          <div class="type-weight">
+            <div class="weight-label">Weight 500 (Medium)</div>
+            <div class="specimen-text" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 1.5rem;">Button Label · Navigation · Table Headers · Captions</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem; padding: 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px;">
+        <h3 style="margin-bottom: 2rem;">Typographic Hierarchy</h3>
+
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 1rem; color: var(--text-light); font-weight: 600;">Level</td>
+            <td style="padding: 1rem; color: var(--text-light); font-weight: 600;">Font</td>
+            <td style="padding: 1rem; color: var(--text-light); font-weight: 600;">Size</td>
+            <td style="padding: 1rem; color: var(--text-light); font-weight: 600;">Weight</td>
+            <td style="padding: 1rem; color: var(--text-light); font-weight: 600;">Line Height</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 1rem; color: var(--text-light);">H1 (Hero)</td>
+            <td style="padding: 1rem; color: var(--text-dim);">Syne</td>
+            <td style="padding: 1rem; color: var(--text-dim);">3.5rem</td>
+            <td style="padding: 1rem; color: var(--text-dim);">800</td>
+            <td style="padding: 1rem; color: var(--text-dim);">1.1</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 1rem; color: var(--text-light);">H2 (Section)</td>
+            <td style="padding: 1rem; color: var(--text-dim);">Syne</td>
+            <td style="padding: 1rem; color: var(--text-dim);">2.5rem</td>
+            <td style="padding: 1rem; color: var(--text-dim);">700</td>
+            <td style="padding: 1rem; color: var(--text-dim);">1.2</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 1rem; color: var(--text-light);">H3 (Subsection)</td>
+            <td style="padding: 1rem; color: var(--text-dim);">Syne</td>
+            <td style="padding: 1rem; color: var(--text-dim);">1.5rem</td>
+            <td style="padding: 1rem; color: var(--text-dim);">600</td>
+            <td style="padding: 1rem; color: var(--text-dim);">1.3</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 1rem; color: var(--text-light);">Body</td>
+            <td style="padding: 1rem; color: var(--text-dim);">Space Grotesk</td>
+            <td style="padding: 1rem; color: var(--text-dim);">1rem</td>
+            <td style="padding: 1rem; color: var(--text-dim);">400</td>
+            <td style="padding: 1rem; color: var(--text-dim);">1.6</td>
+          </tr>
+          <tr>
+            <td style="padding: 1rem; color: var(--text-light);">Caption</td>
+            <td style="padding: 1rem; color: var(--text-dim);">Inter</td>
+            <td style="padding: 1rem; color: var(--text-dim);">0.85rem</td>
+            <td style="padding: 1rem; color: var(--text-dim);">400</td>
+            <td style="padding: 1rem; color: var(--text-dim);">1.5</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 06: BRAND VOICE ============ -->
+  <section class="section" id="section-06">
+    <div class="container">
+      <div class="section-number">06</div>
+
+      <h2>Brand Voice & Tone</h2>
+      <p class="subtitle">Consistent communication principles guiding all messaging</p>
+
+      <div style="margin-top: 3rem;">
+        <h3 style="margin-bottom: 2rem;">Voice Attributes</h3>
+
+        <div class="grid-2" style="gap: 2rem;">
+          <div class="card">
+            <h4>Authoritative</h4>
+            <p>Speak with confidence and expertise. IHRAZ is built by specialists who understand enterprise performance management at the deepest level.</p>
+          </div>
+
+          <div class="card">
+            <h4>Intelligent</h4>
+            <p>Use precise language that conveys sophisticated AI capabilities without becoming inaccessible. Explain complex concepts clearly.</p>
+          </div>
+
+          <div class="card">
+            <h4>Forward-Thinking</h4>
+            <p>Position IHRAZ as a leader in performance technology. Discuss the future of work, AI, and organizational excellence with vision.</p>
+          </div>
+
+          <div class="card">
+            <h4>Precise</h4>
+            <p>Every word matters. Avoid vague claims. Specificity builds trust and demonstrates deep product knowledge.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Primary Taglines</h3>
+
+        <div style="padding: 2rem; background: rgba(16, 185, 129, 0.05); border: 1px solid var(--emerald-600); border-radius: 12px;">
+          <p style="color: var(--white); font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Achieve Every Goal · أحرز كل هدف</p>
+          <p style="color: var(--text-mid); font-size: 0.95rem;">Master tagline capturing the core promise of platform in English and Arabic.</p>
+        </div>
+
+        <div style="padding: 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-top: 1.5rem;">
+          <p style="color: var(--white); font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Saudi Born · Globally Engineered</p>
+          <p style="color: var(--text-mid); font-size: 0.95rem;">Positioning line emphasizing regional origins with global excellence.</p>
+        </div>
+
+        <div style="padding: 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-top: 1.5rem;">
+          <p style="color: var(--white); font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">AI-Powered Enterprise Performance Platform</p>
+          <p style="color: var(--text-mid); font-size: 0.95rem;">Product descriptor used in formal and marketing contexts.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Example Copy</h3>
+
+        <div class="card" style="margin-bottom: 2rem;">
+          <h4>Formal/Executive</h4>
+          <p>"IHRAZ is an AI-Powered Enterprise Performance Platform enabling organizations to align strategy, optimize execution, and measure outcomes with unprecedented intelligence. Built with enterprise-grade reliability and regional expertise."</p>
+        </div>
+
+        <div class="card" style="margin-bottom: 2rem;">
+          <h4>Marketing</h4>
+          <p>"Turn every goal into reality. IHRAZ unifies project management and KPI tracking into a single intelligent platform, powered by AI and built for global organizations."</p>
+        </div>
+
+        <div class="card">
+          <h4>Technical</h4>
+          <p>"IHRAZ comprises two integrated modules: PMO Hub for comprehensive portfolio orchestration, and KPI Dashboard for real-time performance intelligence. API-first architecture enables seamless enterprise integration."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 07: DIGITAL APPLICATIONS ============ -->
+  <section class="section" id="section-07">
+    <div class="container">
+      <div class="section-number">07</div>
+
+      <h2>Digital Applications</h2>
+      <p class="subtitle">Brand expression across digital touchpoints</p>
+
+      <div style="margin-top: 3rem;">
+        <h3 style="margin-bottom: 2rem;">Web & App Interface</h3>
+
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem;">
+          <div style="background: linear-gradient(135deg, var(--deep), var(--surface)); border-radius: 8px; padding: 2rem; margin-bottom: 2rem; min-height: 200px;">
+            <p style="color: var(--white); font-family: var(--font-display); font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">Dashboard Title</p>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+              <div style="background: var(--black); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem;">
+                <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 0.5rem;">KPI Name</p>
+                <p style="color: var(--emerald-300); font-family: var(--font-display); font-size: 2rem; font-weight: 700;">87%</p>
+              </div>
+              <div style="background: var(--black); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem;">
+                <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 0.5rem;">KPI Name</p>
+                <p style="color: var(--emerald-300); font-family: var(--font-display); font-size: 2rem; font-weight: 700;">42</p>
+              </div>
+            </div>
+          </div>
+          <p style="color: var(--text-mid); font-size: 0.9rem;"><strong>Dark theme primary.</strong> Emerald accents highlight key metrics and interactive elements. All UI text uses Inter or Space Grotesk.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Icon System</h3>
+
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem;">
+          <p style="color: var(--text-light); margin-bottom: 1.5rem;">Icons should be simple, geometric, and use consistent stroke weights. Outline style preferred on dark backgrounds.</p>
+
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center;">
+            <div>
+              <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; height: 80px; display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem;">📊</span>
+              </div>
+              <p style="color: var(--text-mid); font-size: 0.85rem;">Performance</p>
+            </div>
+
+            <div>
+              <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; height: 80px; display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem;">🎯</span>
+              </div>
+              <p style="color: var(--text-mid); font-size: 0.85rem;">Goals</p>
+            </div>
+
+            <div>
+              <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; height: 80px; display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem;">⚙️</span>
+              </div>
+              <p style="color: var(--text-mid); font-size: 0.85rem;">Settings</p>
+            </div>
+
+            <div>
+              <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; height: 80px; display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem;">✓</span>
+              </div>
+              <p style="color: var(--text-mid); font-size: 0.85rem;">Complete</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Favicon & App Icon</h3>
+
+        <div class="grid-3">
+          <div class="logo-display">
+            <canvas id="favicon128" width="128" height="128" style="max-width: 80px;"></canvas>
+            <div class="logo-label">128px</div>
+          </div>
+          <div class="logo-display">
+            <canvas id="favicon64" width="64" height="64" style="max-width: 60px;"></canvas>
+            <div class="logo-label">64px</div>
+          </div>
+          <div class="logo-display">
+            <canvas id="favicon32" width="32" height="32" style="max-width: 40px;"></canvas>
+            <div class="logo-label">32px</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Email Signature</h3>
+
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem;">
+          <div style="background: var(--black); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; font-family: 'Arial', sans-serif; font-size: 0.9rem;">
+            <p style="color: var(--white); margin-bottom: 0.5rem;"><strong>Sarah Johnson</strong></p>
+            <p style="color: var(--text-mid); margin-bottom: 1rem;">Director of Enterprise Solutions</p>
+            <p style="color: var(--text-mid); margin-bottom: 0.25rem;">IHRAZ · إحراز</p>
+            <p style="color: var(--text-dim); font-size: 0.85rem;">hello@ihraz.ai | +966 50 123 4567</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 08: DO'S AND DON'TS ============ -->
+  <section class="section" id="section-08">
+    <div class="container">
+      <div class="section-number">08</div>
+
+      <h2>Do's and Don'ts</h2>
+      <p class="subtitle">Common guidelines ensuring consistent brand application</p>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Logo Usage</h3>
+
+        <div class="do-dont-grid">
+          <div class="do-box">
+            <h4>✓ DO</h4>
+            <ul style="color: var(--text-light); font-size: 0.95rem; line-height: 1.8;">
+              <li>✓ Maintain proportions when scaling</li>
+              <li>✓ Use on contrasting backgrounds</li>
+              <li>✓ Ensure minimum clear space</li>
+              <li>✓ Use official color palette</li>
+              <li>✓ Respect minimum 24px width</li>
+            </ul>
+          </div>
+
+          <div class="dont-box">
+            <h4>✗ DON'T</h4>
+            <ul style="color: var(--text-light); font-size: 0.95rem; line-height: 1.8;">
+              <li>✗ Rotate or distort the mark</li>
+              <li>✗ Apply drop shadows or effects</li>
+              <li>✗ Change colors or apply gradients</li>
+              <li>✗ Place on busy backgrounds</li>
+              <li>✗ Use smaller than 24px width</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Color Usage</h3>
+
+        <div class="do-dont-grid">
+          <div class="do-box">
+            <h4>✓ DO</h4>
+            <ul style="color: var(--text-light); font-size: 0.95rem; line-height: 1.8;">
+              <li>✓ Use Emerald 400-300 for actions</li>
+              <li>✓ Maintain high contrast for text</li>
+              <li>✓ Use dark backgrounds primarily</li>
+              <li>✓ Reference hex values exactly</li>
+              <li>✓ Test for color accessibility</li>
+            </ul>
+          </div>
+
+          <div class="dont-box">
+            <h4>✗ DON'T</h4>
+            <ul style="color: var(--text-light); font-size: 0.95rem; line-height: 1.8;">
+              <li>✗ Approximate colors visually</li>
+              <li>✗ Create new brand colors</li>
+              <li>✗ Use very light text on light backgrounds</li>
+              <li>✗ Mix with unrelated color palettes</li>
+              <li>✗ Reduce opacity of brand colors</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <h3 style="margin-bottom: 2rem;">Typography</h3>
+
+        <div class="do-dont-grid">
+          <div class="do-box">
+            <h4>✓ DO</h4>
+            <ul style="color: var(--text-light); font-size: 0.95rem; line-height: 1.8;">
+              <li>✓ Use Syne for headlines</li>
+              <li>✓ Use Cairo for Arabic content</li>
+              <li>✓ Use Space Grotesk for body</li>
+              <li>✓ Maintain specified line heights</li>
+              <li>✓ Respect font weight recommendations</li>
+            </ul>
+          </div>
+
+          <div class="dont-box">
+            <h4>✗ DON'T</h4>
+            <ul style="color: var(--text-light); font-size: 0.95rem; line-height: 1.8;">
+              <li>✗ Mix multiple serif fonts</li>
+              <li>✗ Use body font for headlines</li>
+              <li>✗ Apply text transformations beyond spec</li>
+              <li>✗ Reduce line height for aesthetics</li>
+              <li>✗ Substitute fonts arbitrarily</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 09: BRAND ARCHITECTURE ============ -->
+  <section class="section" id="section-09">
+    <div class="container">
+      <div class="section-number">09</div>
+
+      <h2>Brand Architecture</h2>
+      <p class="subtitle">Organizational structure and naming conventions</p>
+
+      <div style="margin-top: 4rem;">
+        <div style="padding: 3rem 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px;">
+          <div style="text-align: center; margin-bottom: 3rem;">
+            <p style="color: var(--white); font-family: var(--font-display); font-size: 2rem; font-weight: 700;">IHRAZ</p>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Master Brand · AI-Powered Enterprise Performance Platform</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            <div style="padding: 2rem; background: var(--black); border: 2px solid var(--emerald-600); border-radius: 8px;">
+              <p style="color: var(--emerald-400); font-family: var(--font-display); font-weight: 700; margin-bottom: 0.5rem;">Module 1</p>
+              <p style="color: var(--white); font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem;">PMO Hub</p>
+              <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.6;">Project Portfolio Management · Resource Orchestration · Enterprise Alignment</p>
+            </div>
+
+            <div style="padding: 2rem; background: var(--black); border: 2px solid var(--emerald-600); border-radius: 8px;">
+              <p style="color: var(--emerald-400); font-family: var(--font-display); font-weight: 700; margin-bottom: 0.5rem;">Module 2</p>
+              <p style="color: var(--white); font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem;">KPI Dashboard</p>
+              <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.6;">Real-Time Analytics · Executive Intelligence · Performance Measurement</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+            <h4 style="color: var(--emerald-300); margin-bottom: 1.5rem;">Naming Convention</h4>
+            <p style="color: var(--text-light); margin-bottom: 1rem;"><strong>Master brand:</strong> IHRAZ · إحراز</p>
+            <p style="color: var(--text-light); margin-bottom: 1rem;"><strong>Module naming:</strong> [IHRAZ + Module Name] or standalone product names</p>
+            <p style="color: var(--text-light); margin-bottom: 1rem;"><strong>Feature names:</strong> Descriptive, benefit-oriented, professional</p>
+            <p style="color: var(--text-light);"><strong>Example:</strong> "IHRAZ PMO Hub" or "IHRAZ KPI Dashboard"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>© 2026 <span class="footer-accent">IHRAZ</span> · <span class="footer-accent">إحراز</span></p>
+        <p>Confidential Brand Guidelines Document</p>
+        <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-dim);">Prepared for Mohamad-Zouheir Chouman, Founder & CEO</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CONVERGENCE MARK RENDERER -->
+  <script>
+    function drawConvergenceMark(canvas, opts = {}) {
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width;
+      const H = canvas.height;
+      const cx = W / 2;
+      const cy = H / 2;
+      const scale = Math.min(W, H) / 500;
+      const variant = opts.variant || 'dark';
+      const time = opts.time || 0;
+      ctx.clearRect(0, 0, W, H);
+      const colors = {
+        dark: {
+          arcs: [
+            ['rgba(16,185,129,0.6)', 'rgba(52,211,153,0.9)'],
+            ['rgba(16,185,129,0.7)', 'rgba(110,231,183,0.95)'],
+            ['rgba(5,150,105,0.75)', 'rgba(52,211,153,1.0)'],
+            ['rgba(16,185,129,0.7)', 'rgba(110,231,183,0.95)'],
+            ['rgba(16,185,129,0.6)', 'rgba(52,211,153,0.9)'],
+          ],
+          apex: '#6EE7B7',
+          glow: 'rgba(16, 185, 129, ',
+          node: '#6EE7B7',
+        },
+        light: {
+          arcs: [
+            ['rgba(4,120,87,0.7)', 'rgba(6,78,59,0.95)'],
+            ['rgba(5,150,105,0.75)', 'rgba(4,120,87,0.95)'],
+            ['rgba(2,44,34,0.8)', 'rgba(6,78,59,1.0)'],
+            ['rgba(5,150,105,0.75)', 'rgba(4,120,87,0.95)'],
+            ['rgba(4,120,87,0.7)', 'rgba(6,78,59,0.95)'],
+          ],
+          apex: '#047857',
+          glow: 'rgba(4, 120, 87, ',
+          node: '#047857',
+        },
+        white: {
+          arcs: [
+            ['rgba(167,243,208,0.7)', 'rgba(255,255,255,0.9)'],
+            ['rgba(110,231,183,0.75)', 'rgba(255,255,255,0.95)'],
+            ['rgba(167,243,208,0.75)', 'rgba(255,255,255,1.0)'],
+            ['rgba(110,231,183,0.75)', 'rgba(255,255,255,0.95)'],
+            ['rgba(167,243,208,0.7)', 'rgba(255,255,255,0.9)'],
+          ],
+          apex: '#FFFFFF',
+          glow: 'rgba(255, 255, 255, ',
+          node: '#A7F3D0',
+        }
+      };
+      const c = colors[variant];
+      const apexY = cy - 90 * scale;
+      const baseSpread = 85 * scale;
+      const baseY = cy + 95 * scale;
+      const arcs = [
+        { start: { x: cx - baseSpread * 1.1, y: baseY }, cp1: { x: cx - baseSpread * 1.4, y: cy - 10 * scale }, cp2: { x: cx - baseSpread * 0.5, y: apexY + 20 * scale }, end: { x: cx, y: apexY }, width: 7 * scale },
+        { start: { x: cx - baseSpread * 0.65, y: baseY - 10 * scale }, cp1: { x: cx - baseSpread * 0.9, y: cy + 10 * scale }, cp2: { x: cx - baseSpread * 0.3, y: apexY + 10 * scale }, end: { x: cx, y: apexY }, width: 6 * scale },
+        { start: { x: cx, y: baseY + 10 * scale }, cp1: { x: cx - 5 * scale, y: cy + 20 * scale }, cp2: { x: cx + 3 * scale, y: cy - 40 * scale }, end: { x: cx, y: apexY }, width: 8.5 * scale },
+        { start: { x: cx + baseSpread * 0.65, y: baseY - 10 * scale }, cp1: { x: cx + baseSpread * 0.9, y: cy + 10 * scale }, cp2: { x: cx + baseSpread * 0.3, y: apexY + 10 * scale }, end: { x: cx, y: apexY }, width: 6 * scale },
+        { start: { x: cx + baseSpread * 1.1, y: baseY }, cp1: { x: cx + baseSpread * 1.4, y: cy - 10 * scale }, cp2: { x: cx + baseSpread * 0.5, y: apexY + 20 * scale }, end: { x: cx, y: apexY }, width: 7 * scale },
+      ];
+      const breathe = Math.sin(time * 0.002) * 3 * scale;
+      arcs.forEach((arc, i) => {
+        const grad = ctx.createLinearGradient(arc.start.x, arc.start.y, arc.end.x, arc.end.y);
+        grad.addColorStop(0, c.arcs[i][0]);
+        grad.addColorStop(1, c.arcs[i][1]);
+        ctx.beginPath();
+        ctx.moveTo(arc.start.x, arc.start.y + breathe * (i === 2 ? 0.5 : 1));
+        ctx.bezierCurveTo(arc.cp1.x, arc.cp1.y + breathe * 0.3, arc.cp2.x, arc.cp2.y - breathe * 0.2, arc.end.x, arc.end.y);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = arc.width;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+      });
+      const nodes = [
+        { x: cx - 60 * scale, y: cy + 20 * scale, r: 4 * scale, a: 0.6 },
+        { x: cx - 30 * scale, y: cy - 25 * scale, r: 3.5 * scale, a: 0.7 },
+        { x: cx + 5 * scale, y: cy + 5 * scale, r: 4 * scale, a: 0.65 },
+        { x: cx + 35 * scale, y: cy - 20 * scale, r: 3.5 * scale, a: 0.7 },
+        { x: cx + 60 * scale, y: cy + 25 * scale, r: 4 * scale, a: 0.6 },
+      ];
+      ctx.lineWidth = 1.5 * scale;
+      for (let i = 0; i < nodes.length - 1; i++) {
+        const n1 = nodes[i], n2 = nodes[i + 1];
+        ctx.beginPath();
+        ctx.moveTo(n1.x, n1.y);
+        const cpx = (n1.x + n2.x) / 2;
+        const cpy = (n1.y + n2.y) / 2 - 15 * scale;
+        ctx.quadraticCurveTo(cpx, cpy, n2.x, n2.y);
+        ctx.strokeStyle = c.glow + '0.25)';
+        ctx.stroke();
+      }
+      nodes.forEach(n => {
+        const pulse = Math.sin(time * 0.003 + n.x) * 0.1;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = c.glow + '0.08)';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.fillStyle = c.node;
+        ctx.globalAlpha = n.a + pulse;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      });
+      const glowR = (30 + Math.sin(time * 0.003) * 5) * scale;
+      const radGrad = ctx.createRadialGradient(cx, apexY, 0, cx, apexY, glowR);
+      radGrad.addColorStop(0, c.glow + '0.85)');
+      radGrad.addColorStop(0.25, c.glow + '0.35)');
+      radGrad.addColorStop(0.6, c.glow + '0.1)');
+      radGrad.addColorStop(1, c.glow + '0)');
+      ctx.beginPath();
+      ctx.arc(cx, apexY, glowR, 0, Math.PI * 2);
+      ctx.fillStyle = radGrad;
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(cx, apexY, 5.5 * scale, 0, Math.PI * 2);
+      ctx.fillStyle = c.apex;
+      ctx.fill();
+    }
+
+    // Animation loop
+    let animationTime = 0;
+    function animate() {
+      animationTime += 16;
+
+      const canvases = [
+        { id: 'heroMark', variant: 'dark' },
+        { id: 'convergenceMark', variant: 'dark' },
+        { id: 'logo1', variant: 'dark' },
+        { id: 'logo2', variant: 'dark' },
+        { id: 'logo3', variant: 'light' },
+        { id: 'logo4', variant: 'white' },
+        { id: 'logo5', variant: 'dark' },
+        { id: 'logo6', variant: 'light' },
+        { id: 'logo7', variant: 'white' },
+        { id: 'favicon128', variant: 'dark' },
+        { id: 'favicon64', variant: 'dark' },
+        { id: 'favicon32', variant: 'dark' },
+      ];
+
+      canvases.forEach(({ id, variant }) => {
+        const canvas = document.getElementById(id);
+        if (canvas) {
+          drawConvergenceMark(canvas, { variant, time: animationTime });
+        }
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Scroll reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Particle background
+    function createParticles() {
+      const container = document.getElementById('particleContainer');
+      if (!container) return;
+
+      for (let i = 0; i < 80; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDuration = (Math.random() * 8 + 6) + 's';
+        particle.style.animationDelay = Math.random() * 4 + 's';
+        container.appendChild(particle);
+      }
+    }
+
+    createParticles();
+  </script>
+</body>
+</html>

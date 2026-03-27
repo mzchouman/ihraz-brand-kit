@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IHRAZ Brand Quick Reference</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #050505;
+            --deep: #0A0A0A;
+            --surface: #111111;
+            --border: #1A1A1A;
+            --muted: #3A3A3A;
+            --text-dim: #666666;
+            --text-mid: #999999;
+            --white: #F5F5F0;
+            --emerald-900: #022C22;
+            --emerald-800: #064E3B;
+            --emerald-700: #047857;
+            --emerald-600: #059669;
+            --emerald-500: #10B981;
+            --emerald-400: #34D399;
+            --emerald-300: #6EE7B7;
+            --emerald-200: #A7F3D0;
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Space Grotesk', 'Inter', sans-serif;
+            --font-arabic: 'Cairo', 'Noto Sans Arabic', sans-serif;
+        }
+
+        html, body {
+            background: var(--black);
+            color: var(--white);
+            font-family: var(--font-body);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* One-Pager Container */
+        .one-pager {
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 8.5 / 11;
+            background: var(--deep);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+            print-color-adjust: exact;
+            -webkit-print-color-adjust: exact;
+        }
+
+        /* Background pattern */
+        .one-pager::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle, rgba(52, 211, 153, 0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+        }
+
+        /* Header Section */
+        .header-section {
+            padding: 40px 40px 30px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-mark {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-mark canvas {
+            display: block;
+            image-rendering: high-quality;
+        }
+
+        .header-branding {
+            margin-bottom: 15px;
+        }
+
+        .header-branding h1 {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: 8px;
+            color: var(--white);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .header-branding h2 {
+            font-family: var(--font-arabic);
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--emerald-400);
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+
+        .tagline {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--emerald-500);
+            font-weight: 600;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            flex: 1;
+            padding: 30px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .grid-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .grid-section-title {
+            font-family: var(--font-display);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--emerald-400);
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        /* Logo Variants */
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .logo-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70px;
+            position: relative;
+        }
+
+        .logo-item.dark {
+            background: var(--black);
+        }
+
+        .logo-item.light {
+            background: var(--white);
+        }
+
+        .logo-item.green {
+            background: var(--emerald-800);
+        }
+
+        .logo-canvas {
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Color Palette */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+        }
+
+        .color-swatch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .color-box {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+        }
+
+        .color-label {
+            font-size: 8px;
+            text-align: center;
+            color: var(--text-mid);
+            line-height: 1.2;
+            word-break: break-word;
+        }
+
+        .color-hex {
+            font-family: 'Courier New', monospace;
+            font-size: 7px;
+            color: var(--text-dim);
+        }
+
+        /* Typography */
+        .typography-list {
+            font-size: 9px;
+            line-height: 1.8;
+        }
+
+        .typography-item {
+            margin-bottom: 8px;
+        }
+
+        .typography-name {
+            font-weight: 600;
+            color: var(--white);
+            font-family: var(--font-display);
+        }
+
+        .typography-weights {
+            color: var(--text-mid);
+            font-size: 8px;
+            margin-top: 2px;
+        }
+
+        .weight-syne {
+            font-family: var(--font-display);
+        }
+
+        .weight-space {
+            font-family: var(--font-body);
+        }
+
+        .weight-cairo {
+            font-family: var(--font-arabic);
+        }
+
+        /* Taglines & Contact */
+        .tagline-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .tagline-item {
+            font-size: 8px;
+            padding: 8px;
+            background: var(--surface);
+            border-left: 2px solid var(--emerald-500);
+            border-radius: 2px;
+        }
+
+        .contact-info {
+            font-size: 9px;
+            color: var(--white);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .contact-domain {
+            color: var(--emerald-400);
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Do's and Don'ts */
+        .guidelines-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .guidelines-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 10px;
+        }
+
+        .guidelines-box.dos {
+            border-left: 3px solid var(--emerald-500);
+        }
+
+        .guidelines-box.donts {
+            border-left: 3px solid #B91C1C;
+        }
+
+        .guidelines-title {
+            font-size: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .guidelines-box.dos .guidelines-title {
+            color: var(--emerald-400);
+        }
+
+        .guidelines-box.donts .guidelines-title {
+            color: #F87171;
+        }
+
+        .guidelines-list {
+            font-size: 7px;
+            color: var(--text-mid);
+            line-height: 1.4;
+        }
+
+        .guidelines-list li {
+            margin-left: 14px;
+            margin-bottom: 4px;
+        }
+
+        /* Footer */
+        .footer-section {
+            padding: 20px 40px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 8px;
+            color: var(--text-dim);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--border);
+            margin: 8px auto;
+        }
+
+        /* Print Styles */
+        @media print {
+            html, body {
+                background: white;
+                padding: 0;
+            }
+
+            .one-pager {
+                box-shadow: none;
+                border: none;
+                max-width: 100%;
+                aspect-ratio: auto;
+                margin: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .one-pager {
+                max-width: 100%;
+                aspect-ratio: auto;
+            }
+
+            .header-branding h1 {
+                font-size: 36px;
+            }
+
+            .header-branding h2 {
+                font-size: 28px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .logo-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .color-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            .guidelines-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-section {
+                padding: 30px 20px 20px;
+            }
+
+            .header-mark {
+                width: 70px;
+                height: 70px;
+            }
+
+            .header-branding h1 {
+                font-size: 28px;
+                letter-spacing: 4px;
+            }
+
+            .header-branding h2 {
+                font-size: 22px;
+            }
+
+            .content-grid {
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .grid-section-title {
+                font-size: 10px;
+            }
+
+            .color-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            .logo-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="one-pager">
+        <!-- Header -->
+        <div class="header-section">
+            <div class="header-mark">
+                <canvas id="headerMark" width="400" height="400"></canvas>
+            </div>
+            <div class="header-branding">
+                <h1>IHRAZ</h1>
+                <h2>إحراز</h2>
+            </div>
+            <p class="tagline">Saudi Born · Globally Engineered</p>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <!-- Column 1 -->
+            <div>
+                <!-- Logo Variants -->
+                <div class="grid-section">
+                    <div class="grid-section-title">Logo Variants</div>
+                    <div class="logo-grid">
+                        <div class="logo-item dark">
+                            <canvas class="logo-canvas" id="logoDark" width="200" height="200"></canvas>
+                        </div>
+                        <div class="logo-item light">
+                            <canvas class="logo-canvas" id="logoLight" width="200" height="200"></canvas>
+                        </div>
+                        <div class="logo-item green">
+                            <canvas class="logo-canvas" id="logoGreen" width="200" height="200"></canvas>
+                        </div>
+                    </div>
+                    <div style="font-size: 7px; color: var(--text-dim); margin-top: 8px; text-align: center;">
+                        Dark / Light / Brand Color
+                    </div>
+                </div>
+
+                <!-- Typography -->
+                <div class="grid-section" style="margin-top: 15px;">
+                    <div class="grid-section-title">Typography</div>
+                    <div class="typography-list">
+                        <div class="typography-item">
+                            <div class="typography-name weight-syne">Syne</div>
+                            <div class="typography-weights">Display — 600, 700, 800</div>
+                        </div>
+                        <div class="typography-item">
+                            <div class="typography-name weight-space">Space Grotesk</div>
+                            <div class="typography-weights">Body — 400, 500, 600, 700</div>
+                        </div>
+                        <div class="typography-item">
+                            <div class="typography-name weight-cairo">Cairo</div>
+                            <div class="typography-weights">Arabic — 300–900</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Taglines -->
+                <div class="grid-section" style="margin-top: 15px;">
+                    <div class="grid-section-title">Taglines</div>
+                    <div class="tagline-section">
+                        <div class="tagline-item">
+                            <strong>English:</strong><br>
+                            AI-Powered Enterprise<br>
+                            Performance Platform
+                        </div>
+                        <div class="tagline-item">
+                            <strong style="color: var(--emerald-400);">العربية:</strong><br>
+                            منصة الأداء العالمية<br>
+                            مدعومة بالذكاء الاصطناعي
+                        </div>
+                        <div class="tagline-item" style="border-left-color: var(--emerald-600);">
+                            <strong>Signature:</strong><br>
+                            Saudi Born · Globally Engineered
+                        </div>
+                    </div>
+                    <div class="contact-info" style="margin-top: 8px;">
+                        Contact: <span class="contact-domain">ihraz.ai</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2 -->
+            <div>
+                <!-- Color Palette -->
+                <div class="grid-section">
+                    <div class="grid-section-title">Color Palette</div>
+                    <div class="color-grid">
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: var(--black); border-color: var(--border);"></div>
+                            <span class="color-label">Black</span>
+                            <span class="color-hex">#050505</span>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: var(--emerald-600); border: none;"></div>
+                            <span class="color-label">Emerald 600</span>
+                            <span class="color-hex">#059669</span>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: var(--emerald-500); border: none;"></div>
+                            <span class="color-label">Emerald 500</span>
+                            <span class="color-hex">#10B981</span>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: var(--emerald-400); border: none;"></div>
+                            <span class="color-label">Emerald 400</span>
+                            <span class="color-hex">#34D399</span>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: var(--white); border-color: var(--border);"></div>
+                            <span class="color-label">White</span>
+                            <span class="color-hex">#F5F5F0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guidelines -->
+                <div class="grid-section" style="margin-top: 15px;">
+                    <div class="grid-section-title">Do's & Don'ts</div>
+                    <div class="guidelines-grid">
+                        <div class="guidelines-box dos">
+                            <div class="guidelines-title">Do's</div>
+                            <ul class="guidelines-list">
+                                <li>Maintain clear space</li>
+                                <li>Use on dark backgrounds</li>
+                                <li>Keep proportions locked</li>
+                                <li>Use brand colors</li>
+                                <li>Ensure readability</li>
+                            </ul>
+                        </div>
+                        <div class="guidelines-box donts">
+                            <div class="guidelines-title">Don'ts</div>
+                            <ul class="guidelines-list">
+                                <li>Don't distort or stretch</li>
+                                <li>Don't change colors</li>
+                                <li>Don't rotate excessively</li>
+                                <li>Don't reduce too small</li>
+                                <li>Don't add effects</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Reference -->
+                <div class="grid-section" style="margin-top: 15px;">
+                    <div class="grid-section-title">Quick Reference</div>
+                    <div style="font-size: 8px; color: var(--text-mid); line-height: 1.6;">
+                        <p><strong>Primary Font:</strong> Syne (Display)</p>
+                        <p style="margin-top: 4px;"><strong>Body Font:</strong> Space Grotesk</p>
+                        <p style="margin-top: 4px;"><strong>Arabic Font:</strong> Cairo</p>
+                        <p style="margin-top: 4px;"><strong>Primary Color:</strong> Emerald 500</p>
+                        <p style="margin-top: 4px;"><strong>Background:</strong> Black #050505</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-section">
+            <p>© 2026 IHRAZ · Brand Quick Reference · Confidential</p>
+            <div class="footer-divider"></div>
+            <p>For brand inquiries: ihraz.ai</p>
+        </div>
+    </div>
+
+    <script>
+        function drawConvergenceMark(canvas, opts = {}) {
+            const ctx = canvas.getContext('2d');
+            const W = canvas.width;
+            const H = canvas.height;
+            const cx = W / 2;
+            const cy = H / 2;
+            const scale = Math.min(W, H) / 500;
+            const variant = opts.variant || 'dark';
+            const time = opts.time || 0;
+
+            ctx.clearRect(0, 0, W, H);
+
+            const colors = {
+                dark: {
+                    arcs: [
+                        ['rgba(16,185,129,0.6)', 'rgba(52,211,153,0.9)'],
+                        ['rgba(16,185,129,0.7)', 'rgba(110,231,183,0.95)'],
+                        ['rgba(5,150,105,0.75)', 'rgba(52,211,153,1.0)'],
+                        ['rgba(16,185,129,0.7)', 'rgba(110,231,183,0.95)'],
+                        ['rgba(16,185,129,0.6)', 'rgba(52,211,153,0.9)']
+                    ],
+                    apex: '#6EE7B7',
+                    glow: 'rgba(16, 185, 129, ',
+                    node: '#6EE7B7'
+                },
+                light: {
+                    arcs: [
+                        ['rgba(4,120,87,0.7)', 'rgba(6,78,59,0.95)'],
+                        ['rgba(5,150,105,0.75)', 'rgba(4,120,87,0.95)'],
+                        ['rgba(2,44,34,0.8)', 'rgba(6,78,59,1.0)'],
+                        ['rgba(5,150,105,0.75)', 'rgba(4,120,87,0.95)'],
+                        ['rgba(4,120,87,0.7)', 'rgba(6,78,59,0.95)']
+                    ],
+                    apex: '#047857',
+                    glow: 'rgba(4, 120, 87, ',
+                    node: '#047857'
+                }
+            };
+
+            const c = colors[variant];
+            const apexY = cy - 90 * scale;
+            const baseSpread = 85 * scale;
+            const baseY = cy + 95 * scale;
+
+            const arcs = [
+                {
+                    start: { x: cx - baseSpread * 1.1, y: baseY },
+                    cp1: { x: cx - baseSpread * 1.4, y: cy - 10 * scale },
+                    cp2: { x: cx - baseSpread * 0.5, y: apexY + 20 * scale },
+                    end: { x: cx, y: apexY },
+                    width: 7 * scale
+                },
+                {
+                    start: { x: cx - baseSpread * 0.65, y: baseY - 10 * scale },
+                    cp1: { x: cx - baseSpread * 0.9, y: cy + 10 * scale },
+                    cp2: { x: cx - baseSpread * 0.3, y: apexY + 10 * scale },
+                    end: { x: cx, y: apexY },
+                    width: 6 * scale
+                },
+                {
+                    start: { x: cx, y: baseY + 10 * scale },
+                    cp1: { x: cx - 5 * scale, y: cy + 20 * scale },
+                    cp2: { x: cx + 3 * scale, y: cy - 40 * scale },
+                    end: { x: cx, y: apexY },
+                    width: 8.5 * scale
+                },
+                {
+                    start: { x: cx + baseSpread * 0.65, y: baseY - 10 * scale },
+                    cp1: { x: cx + baseSpread * 0.9, y: cy + 10 * scale },
+                    cp2: { x: cx + baseSpread * 0.3, y: apexY + 10 * scale },
+                    end: { x: cx, y: apexY },
+                    width: 6 * scale
+                },
+                {
+                    start: { x: cx + baseSpread * 1.1, y: baseY },
+                    cp1: { x: cx + baseSpread * 1.4, y: cy - 10 * scale },
+                    cp2: { x: cx + baseSpread * 0.5, y: apexY + 20 * scale },
+                    end: { x: cx, y: apexY },
+                    width: 7 * scale
+                }
+            ];
+
+            const breathe = Math.sin(time * 0.002) * 3 * scale;
+
+            arcs.forEach((arc, i) => {
+                const grad = ctx.createLinearGradient(arc.start.x, arc.start.y, arc.end.x, arc.end.y);
+                grad.addColorStop(0, c.arcs[i][0]);
+                grad.addColorStop(1, c.arcs[i][1]);
+
+                ctx.beginPath();
+                ctx.moveTo(arc.start.x, arc.start.y + breathe * (i === 2 ? 0.5 : 1));
+                ctx.bezierCurveTo(
+                    arc.cp1.x,
+                    arc.cp1.y + breathe * 0.3,
+                    arc.cp2.x,
+                    arc.cp2.y - breathe * 0.2,
+                    arc.end.x,
+                    arc.end.y
+                );
+                ctx.strokeStyle = grad;
+                ctx.lineWidth = arc.width;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+            });
+
+            const nodes = [
+                { x: cx - 60 * scale, y: cy + 20 * scale, r: 4 * scale, a: 0.6 },
+                { x: cx - 30 * scale, y: cy - 25 * scale, r: 3.5 * scale, a: 0.7 },
+                { x: cx + 5 * scale, y: cy + 5 * scale, r: 4 * scale, a: 0.65 },
+                { x: cx + 35 * scale, y: cy - 20 * scale, r: 3.5 * scale, a: 0.7 },
+                { x: cx + 60 * scale, y: cy + 25 * scale, r: 4 * scale, a: 0.6 }
+            ];
+
+            ctx.lineWidth = 1.5 * scale;
+            for (let i = 0; i < nodes.length - 1; i++) {
+                const n1 = nodes[i];
+                const n2 = nodes[i + 1];
+                ctx.beginPath();
+                ctx.moveTo(n1.x, n1.y);
+                ctx.quadraticCurveTo((n1.x + n2.x) / 2, (n1.y + n2.y) / 2 - 15 * scale, n2.x, n2.y);
+                ctx.strokeStyle = c.glow + '0.25)';
+                ctx.stroke();
+            }
+
+            nodes.forEach((n) => {
+                const pulse = Math.sin(time * 0.003 + n.x) * 0.1;
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, n.r * 2.5, 0, Math.PI * 2);
+                ctx.fillStyle = c.glow + '0.08)';
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+                ctx.fillStyle = c.node;
+                ctx.globalAlpha = n.a + pulse;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            });
+
+            const glowR = (30 + Math.sin(time * 0.003) * 5) * scale;
+            const radGrad = ctx.createRadialGradient(cx, apexY, 0, cx, apexY, glowR);
+            radGrad.addColorStop(0, c.glow + '0.85)');
+            radGrad.addColorStop(0.25, c.glow + '0.35)');
+            radGrad.addColorStop(0.6, c.glow + '0.1)');
+            radGrad.addColorStop(1, c.glow + '0)');
+
+            ctx.beginPath();
+            ctx.arc(cx, apexY, glowR, 0, Math.PI * 2);
+            ctx.fillStyle = radGrad;
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(cx, apexY, 5.5 * scale, 0, Math.PI * 2);
+            ctx.fillStyle = c.apex;
+            ctx.fill();
+        }
+
+        // Initialize and animate
+        let animationTime = 0;
+
+        function animate() {
+            animationTime += 16;
+
+            const headerMark = document.getElementById('headerMark');
+            if (headerMark) drawConvergenceMark(headerMark, { variant: 'dark', time: animationTime });
+
+            const logoDark = document.getElementById('logoDark');
+            if (logoDark) drawConvergenceMark(logoDark, { variant: 'dark', time: animationTime });
+
+            const logoLight = document.getElementById('logoLight');
+            if (logoLight) drawConvergenceMark(logoLight, { variant: 'light', time: animationTime });
+
+            const logoGreen = document.getElementById('logoGreen');
+            if (logoGreen) drawConvergenceMark(logoGreen, { variant: 'dark', time: animationTime });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>

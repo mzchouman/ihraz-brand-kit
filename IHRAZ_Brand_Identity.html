@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IHRAZ — إحراز — Brand Identity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   IHRAZ BRAND IDENTITY — Cinematic Presentation
+   ═══════════════════════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #050505;
+  --deep: #0A0A0A;
+  --surface: #111111;
+  --border: #1A1A1A;
+  --muted: #3A3A3A;
+  --text-dim: #666666;
+  --text-mid: #999999;
+  --text-light: #CCCCCC;
+  --white: #F5F5F0;
+
+  --emerald-900: #022C22;
+  --emerald-800: #064E3B;
+  --emerald-700: #047857;
+  --emerald-600: #059669;
+  --emerald-500: #10B981;
+  --emerald-400: #34D399;
+  --emerald-300: #6EE7B7;
+  --emerald-200: #A7F3D0;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Space Grotesk', 'Inter', sans-serif;
+  --font-arabic: 'Cairo', 'Noto Sans Arabic', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── HERO / REVEAL ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#particleCanvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  animation: fadeInUp 1.8s ease-out;
+}
+
+.logo-mark-container {
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 48px;
+  position: relative;
+}
+
+#logoCanvas {
+  width: 220px;
+  height: 220px;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: 700;
+  letter-spacing: 18px;
+  color: var(--white);
+  margin-bottom: 8px;
+  animation: fadeInUp 1.8s ease-out 0.3s both;
+}
+
+.brand-name-ar {
+  font-family: var(--font-arabic);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--emerald-400);
+  letter-spacing: 6px;
+  direction: rtl;
+  margin-bottom: 28px;
+  animation: fadeInUp 1.8s ease-out 0.5s both;
+}
+
+.brand-tagline {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  animation: fadeInUp 1.8s ease-out 0.7s both;
+  margin-bottom: 16px;
+}
+
+.brand-origin {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--emerald-500);
+  animation: fadeInUp 1.8s ease-out 0.9s both;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.brand-origin .dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--emerald-500);
+  opacity: 0.6;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: pulse 2s ease-in-out infinite;
+}
+.scroll-indicator span {
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--emerald-500), transparent);
+  margin: 0 auto;
+}
+.scroll-indicator p {
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--muted);
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+/* ── SECTIONS ── */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 60px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-number {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 5px;
+  color: var(--emerald-500);
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.section-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-dim);
+  max-width: 600px;
+  line-height: 1.8;
+  margin-bottom: 48px;
+}
+
+/* ── LOGO DISPLAY CARDS ── */
+.logo-grid {
+  display: grid;
+  gap: 24px;
+}
+.logo-grid.two { grid-template-columns: 1fr 1fr; }
+
+.logo-card {
+  border-radius: 24px;
+  padding: 64px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+  transition: transform 0.3s ease;
+}
+.logo-card:hover { transform: scale(1.01); }
+.logo-card.dark-bg {
+  background: var(--deep);
+  border: 1px solid var(--border);
+}
+.logo-card.light-bg {
+  background: #F8F8F6;
+  border: 1px solid #E8E8E4;
+}
+.logo-card.green-bg {
+  background: linear-gradient(135deg, var(--emerald-900), var(--emerald-800));
+  border: 1px solid var(--emerald-700);
+}
+
+.logo-card .card-label {
+  position: absolute;
+  bottom: 20px;
+  left: 24px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.4;
+}
+
+.logo-render {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.logo-render .mark {
+  width: 80px;
+  height: 80px;
+}
+.logo-render .wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 10px;
+  font-size: 36px;
+}
+.logo-render .wordmark-ar {
+  font-family: var(--font-arabic);
+  font-weight: 900;
+  font-size: 28px;
+  direction: rtl;
+  letter-spacing: 3px;
+}
+.logo-render .tagline {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.logo-render .origin-badge {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--emerald-500);
+  margin-top: 4px;
+}
+.logo-render .accent-line {
+  width: 40px;
+  height: 2px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, var(--emerald-600), var(--emerald-400));
+}
+
+/* Color variants */
+.dark-text { color: var(--white); }
+.dark-text .wordmark-ar { color: var(--emerald-400); }
+.light-text { color: #0A0A0A; }
+.light-text .wordmark-ar { color: var(--emerald-700); }
+.green-text { color: var(--white); }
+.green-text .wordmark-ar { color: var(--emerald-300); }
+
+/* Horizontal lockup */
+.logo-horizontal {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.logo-horizontal .mark { width: 48px; height: 48px; }
+.logo-horizontal .divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+}
+.logo-horizontal .text-group { display: flex; flex-direction: column; gap: 2px; }
+.logo-horizontal .wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 6px;
+}
+.logo-horizontal .wordmark-ar {
+  font-family: var(--font-arabic);
+  font-weight: 800;
+  font-size: 16px;
+  direction: rtl;
+  letter-spacing: 1px;
+}
+
+/* ── ICON SECTION ── */
+.icon-row {
+  display: flex;
+  gap: 24px;
+  align-items: flex-end;
+}
+.icon-box {
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.icon-box .size-label {
+  position: absolute;
+  bottom: -28px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+}
+
+/* ── COLOR PALETTE ── */
+.palette-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.color-chip {
+  aspect-ratio: 1;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  font-size: 10px;
+  line-height: 1.6;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+}
+.color-chip:hover { transform: translateY(-4px); }
+.color-chip .name { font-weight: 500; font-size: 11px; }
+
+/* ── TYPOGRAPHY SECTION ── */
+.type-specimen {
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+.type-specimen:last-child { border-bottom: none; }
+.type-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--emerald-500);
+  margin-bottom: 16px;
+}
+.type-sample-display {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.type-sample-body {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-mid);
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+}
+.type-sample-arabic {
+  font-family: var(--font-arabic);
+  font-size: 60px;
+  font-weight: 900;
+  color: var(--white);
+  direction: rtl;
+  margin-bottom: 8px;
+}
+.type-sample-arabic-body {
+  font-family: var(--font-arabic);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-mid);
+  direction: rtl;
+  line-height: 1.8;
+}
+
+/* ── CONCEPT SECTION ── */
+.concept-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+.concept-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px;
+  transition: border-color 0.3s ease;
+}
+.concept-card:hover { border-color: var(--emerald-800); }
+.concept-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--emerald-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+.concept-card h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+.concept-card p {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* ── DIVIDER ── */
+.section-divider {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--emerald-700), var(--emerald-400));
+  margin: 0 auto;
+  border-radius: 1px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 80px 40px;
+  border-top: 1px solid var(--border);
+}
+footer p {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--muted);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO — CINEMATIC REVEAL
+     ═══════════════════════════════════════════════════════ -->
+<section class="hero">
+  <canvas id="particleCanvas"></canvas>
+  <div class="hero-content">
+    <div class="logo-mark-container">
+      <canvas id="logoCanvas" width="440" height="440"></canvas>
+    </div>
+    <div class="brand-name">IHRAZ</div>
+    <div class="brand-name-ar">إحراز</div>
+    <div class="brand-tagline">Achieve Every Goal &nbsp;&nbsp;·&nbsp;&nbsp; أحرز كل هدف</div>
+    <div class="brand-origin"><span class="dot"></span>SAUDI BORN<span class="dot"></span>GLOBALLY ENGINEERED<span class="dot"></span></div>
+  </div>
+  <div class="scroll-indicator">
+    <span></span>
+    <p>Explore</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CONCEPT
+     ═══════════════════════════════════════════════════════ -->
+<div class="section-divider"></div>
+
+<section class="section" data-reveal>
+  <div class="section-number">01 — CONCEPT</div>
+  <div class="section-title">The Convergence Mark</div>
+  <div class="section-desc">
+    Five flowing paths rise and converge at a single luminous point — the moment of إحراز.
+    Each arc represents a stream of intelligence: data, strategy, prediction, execution, achievement.
+    The mark is alive — it breathes, it flows, it reaches.
+  </div>
+
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-icon">◈</div>
+      <h3>Achievement</h3>
+      <p>The convergence point at the apex represents the moment of attainment — إحراز in its purest form. Every path leads upward.</p>
+    </div>
+    <div class="concept-card">
+      <div class="concept-icon">◎</div>
+      <h3>Intelligence</h3>
+      <p>Five flowing arcs represent AI streams: predictive analytics, anomaly detection, pattern recognition, automation, insight generation.</p>
+    </div>
+    <div class="concept-card">
+      <div class="concept-icon">◇</div>
+      <h3>Identity</h3>
+      <p>The organic flowing curves draw from Arabic calligraphic tradition — fluid, connected, purposeful. Rooted in heritage, built for the future.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     LOGO SYSTEM
+     ═══════════════════════════════════════════════════════ -->
+<div class="section-divider"></div>
+
+<section class="section" data-reveal>
+  <div class="section-number">02 — LOGO SYSTEM</div>
+  <div class="section-title">Primary Lockup</div>
+  <div class="section-desc">
+    The full logo combines the Convergence mark with bilingual typography. Syne Display for English authority,
+    Cairo for bold Arabic authenticity.
+  </div>
+
+  <div class="logo-grid">
+    <!-- Dark background full logo -->
+    <div class="logo-card dark-bg">
+      <div class="logo-render dark-text">
+        <canvas class="mark logo-mark-sm" width="160" height="160"></canvas>
+        <div class="wordmark">IHRAZ</div>
+        <div class="accent-line"></div>
+        <div class="wordmark-ar">إحراز</div>
+        <div class="tagline">Achieve Every Goal · أحرز كل هدف</div>
+        <div class="origin-badge">Saudi Born · Globally Engineered</div>
+      </div>
+      <span class="card-label" style="color: var(--text-dim);">Dark Background</span>
+    </div>
+
+    <!-- Light background full logo -->
+    <div class="logo-card light-bg">
+      <div class="logo-render light-text">
+        <canvas class="mark logo-mark-sm" width="160" height="160" data-variant="light"></canvas>
+        <div class="wordmark">IHRAZ</div>
+        <div class="accent-line"></div>
+        <div class="wordmark-ar">إحراز</div>
+        <div class="tagline">Achieve Every Goal · أحرز كل هدف</div>
+        <div class="origin-badge" style="color: var(--emerald-700);">Saudi Born · Globally Engineered</div>
+      </div>
+      <span class="card-label" style="color: #999;">Light Background</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-reveal>
+  <div class="section-number">03 — HORIZONTAL</div>
+  <div class="section-title">Navigation Lockup</div>
+
+  <div class="logo-grid">
+    <div class="logo-card dark-bg" style="min-height: 180px;">
+      <div class="logo-horizontal dark-text">
+        <canvas class="mark logo-mark-xs" width="96" height="96"></canvas>
+        <div class="divider"></div>
+        <div class="text-group">
+          <div class="wordmark">IHRAZ</div>
+          <div class="wordmark-ar">إحراز</div>
+        </div>
+      </div>
+      <span class="card-label" style="color: var(--text-dim);">Navbar — Dark</span>
+    </div>
+    <div class="logo-card light-bg" style="min-height: 180px;">
+      <div class="logo-horizontal light-text">
+        <canvas class="mark logo-mark-xs" width="96" height="96" data-variant="light"></canvas>
+        <div class="divider" style="background: #DDD;"></div>
+        <div class="text-group">
+          <div class="wordmark">IHRAZ</div>
+          <div class="wordmark-ar">إحراز</div>
+        </div>
+      </div>
+      <span class="card-label" style="color: #999;">Navbar — Light</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ICONS
+     ═══════════════════════════════════════════════════════ -->
+<div class="section-divider"></div>
+
+<section class="section" data-reveal>
+  <div class="section-number">04 — ICONS</div>
+  <div class="section-title">App Icons & Favicon</div>
+
+  <div class="icon-row">
+    <div>
+      <div class="icon-box" style="width: 160px; height: 160px; background: var(--deep); border: 1px solid var(--border); border-radius: 36px;">
+        <canvas class="logo-mark-icon" width="200" height="200" style="width: 120px; height: 120px;"></canvas>
+      </div>
+      <div class="size-label" style="text-align: center; margin-top: 12px; font-size: 9px; letter-spacing: 2px; color: var(--text-dim);">160 × 160</div>
+    </div>
+    <div>
+      <div class="icon-box" style="width: 80px; height: 80px; background: var(--emerald-800); border-radius: 20px;">
+        <canvas class="logo-mark-icon" width="120" height="120" style="width: 56px; height: 56px;" data-variant="white"></canvas>
+      </div>
+      <div class="size-label" style="text-align: center; margin-top: 12px; font-size: 9px; letter-spacing: 2px; color: var(--text-dim);">80 × 80</div>
+    </div>
+    <div>
+      <div class="icon-box" style="width: 48px; height: 48px; background: var(--deep); border: 1px solid var(--border); border-radius: 12px;">
+        <canvas class="logo-mark-icon" width="80" height="80" style="width: 36px; height: 36px;"></canvas>
+      </div>
+      <div class="size-label" style="text-align: center; margin-top: 12px; font-size: 9px; letter-spacing: 2px; color: var(--text-dim);">48 × 48</div>
+    </div>
+    <div>
+      <div class="icon-box" style="width: 32px; height: 32px; background: var(--emerald-900); border-radius: 8px;">
+        <canvas class="logo-mark-icon" width="64" height="64" style="width: 24px; height: 24px;" data-variant="white"></canvas>
+      </div>
+      <div class="size-label" style="text-align: center; margin-top: 12px; font-size: 9px; letter-spacing: 2px; color: var(--text-dim);">Favicon</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     COLOR PALETTE
+     ═══════════════════════════════════════════════════════ -->
+<div class="section-divider"></div>
+
+<section class="section" data-reveal>
+  <div class="section-number">05 — COLOR</div>
+  <div class="section-title">Brand Palette</div>
+  <div class="section-desc">
+    Deep emerald anchors the identity — Saudi-resonant, grounded, alive.
+    Black provides the stage. Green provides the soul.
+  </div>
+
+  <div class="palette-row">
+    <div class="color-chip" style="background: #050505; color: var(--text-dim); border: 1px solid var(--border);">
+      <span class="name">Void</span>
+      #050505
+    </div>
+    <div class="color-chip" style="background: var(--emerald-900); color: var(--emerald-400);">
+      <span class="name">Deep Forest</span>
+      #022C22
+    </div>
+    <div class="color-chip" style="background: var(--emerald-700); color: var(--emerald-200);">
+      <span class="name">Emerald Core</span>
+      #047857
+    </div>
+    <div class="color-chip" style="background: var(--emerald-500); color: var(--black);">
+      <span class="name">Emerald</span>
+      #10B981
+    </div>
+    <div class="color-chip" style="background: var(--emerald-300); color: var(--emerald-900);">
+      <span class="name">Mint</span>
+      #6EE7B7
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     TYPOGRAPHY
+     ═══════════════════════════════════════════════════════ -->
+<div class="section-divider"></div>
+
+<section class="section" data-reveal>
+  <div class="section-number">06 — TYPOGRAPHY</div>
+  <div class="section-title">Type System</div>
+
+  <div class="type-specimen">
+    <div class="type-label">Display — Syne</div>
+    <div class="type-sample-display">IHRAZ</div>
+    <div class="type-sample-body">Syne brings geometric character with subtle optical personality — distinctive without being decorative. Used for the wordmark, headlines, and brand statements.</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-label">Arabic — Cairo</div>
+    <div class="type-sample-arabic">إحراز — أحرز كل هدف</div>
+    <div class="type-sample-arabic-body">خطّ القاهرة — هندسي، جريء، معاصر. يتطابق مع شخصية Syne الإنجليزية. يُستخدم في العلامة التجارية والعناوين.</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-label">Body — Space Grotesk</div>
+    <div class="type-sample-body" style="font-size: 24px; color: var(--white); margin-bottom: 12px;">AI-Powered Enterprise Performance Platform</div>
+    <div class="type-sample-body">Space Grotesk provides clean technical readability for body text, UI elements, and product interfaces. Proportional, legible, and distinctly modern.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     BRAND ON GREEN
+     ═══════════════════════════════════════════════════════ -->
+<div class="section-divider"></div>
+
+<section class="section" data-reveal>
+  <div class="section-number">07 — ON GREEN</div>
+  <div class="section-title">Emerald Variant</div>
+
+  <div class="logo-grid">
+    <div class="logo-card green-bg" style="grid-column: 1 / -1;">
+      <div class="logo-render green-text">
+        <canvas class="mark logo-mark-sm" width="160" height="160" data-variant="white"></canvas>
+        <div class="wordmark">IHRAZ</div>
+        <div class="accent-line" style="background: linear-gradient(90deg, var(--emerald-300), white);"></div>
+        <div class="wordmark-ar">إحراز</div>
+        <div class="tagline" style="color: var(--emerald-300);">Achieve Every Goal &nbsp;·&nbsp; أحرز كل هدف</div>
+        <div class="origin-badge" style="color: var(--emerald-200);">Saudi Born · Globally Engineered</div>
+      </div>
+      <span class="card-label" style="color: var(--emerald-400);">Brand Green Background</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<footer>
+  <p>© 2026 IHRAZ &nbsp;·&nbsp; إحراز &nbsp;·&nbsp; BRAND IDENTITY DESIGNED FOR MOHAMAD-ZOUHEIR CHOUMAN</p>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════
+     JAVASCRIPT — Particle System + Logo Mark Generator
+     ═══════════════════════════════════════════════════════ -->
+<script>
+/* ── PARTICLE BACKGROUND ── */
+(function() {
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let w, h;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * w;
+      this.y = Math.random() * h;
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = -Math.random() * 0.4 - 0.1;
+      this.r = Math.random() * 1.5 + 0.5;
+      this.alpha = Math.random() * 0.3 + 0.05;
+      this.life = Math.random() * 400 + 200;
+      this.age = 0;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.age++;
+      if (this.age > this.life || this.y < -10) this.reset();
+    }
+    draw() {
+      const a = this.alpha * (1 - this.age / this.life);
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(16, 185, 129, ${a})`;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+  // Draw connections
+  function drawConnections() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          const a = 0.04 * (1 - dist / 120);
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(16, 185, 129, ${a})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach(p => { p.update(); p.draw(); });
+    drawConnections();
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+/* ── LOGO MARK RENDERER — "The Convergence" ── */
+function drawConvergenceMark(canvas, opts = {}) {
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width;
+  const H = canvas.height;
+  const cx = W / 2;
+  const cy = H / 2;
+  const scale = W / 440; // reference size
+  const variant = opts.variant || 'dark'; // dark, light, white
+  const time = opts.time || 0;
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Color configs — BOLD & VISIBLE
+  const colors = {
+    dark: {
+      arcs: [
+        ['rgba(16,185,129,0.6)', 'rgba(52,211,153,0.9)'],
+        ['rgba(16,185,129,0.7)', 'rgba(110,231,183,0.95)'],
+        ['rgba(5,150,105,0.75)', 'rgba(52,211,153,1.0)'],
+        ['rgba(16,185,129,0.7)', 'rgba(110,231,183,0.95)'],
+        ['rgba(16,185,129,0.6)', 'rgba(52,211,153,0.9)'],
+      ],
+      apex: '#6EE7B7',
+      glow: 'rgba(16, 185, 129, ',
+      node: '#6EE7B7',
+    },
+    light: {
+      arcs: [
+        ['rgba(4,120,87,0.7)', 'rgba(6,78,59,0.95)'],
+        ['rgba(5,150,105,0.75)', 'rgba(4,120,87,0.95)'],
+        ['rgba(2,44,34,0.8)', 'rgba(6,78,59,1.0)'],
+        ['rgba(5,150,105,0.75)', 'rgba(4,120,87,0.95)'],
+        ['rgba(4,120,87,0.7)', 'rgba(6,78,59,0.95)'],
+      ],
+      apex: '#047857',
+      glow: 'rgba(4, 120, 87, ',
+      node: '#047857',
+    },
+    white: {
+      arcs: [
+        ['rgba(167,243,208,0.7)', 'rgba(255,255,255,0.9)'],
+        ['rgba(110,231,183,0.75)', 'rgba(255,255,255,0.95)'],
+        ['rgba(167,243,208,0.75)', 'rgba(255,255,255,1.0)'],
+        ['rgba(110,231,183,0.75)', 'rgba(255,255,255,0.95)'],
+        ['rgba(167,243,208,0.7)', 'rgba(255,255,255,0.9)'],
+      ],
+      apex: '#FFFFFF',
+      glow: 'rgba(255, 255, 255, ',
+      node: '#A7F3D0',
+    }
+  };
+
+  const c = colors[variant];
+
+  // 5 arcs — each defined by control points for cubic bezier
+  // They all converge at the apex (cx, top)
+  const apexY = cy - 90 * scale;
+  const baseSpread = 85 * scale;
+  const baseY = cy + 95 * scale;
+
+  const arcs = [
+    { // far left
+      start: { x: cx - baseSpread * 1.1, y: baseY },
+      cp1: { x: cx - baseSpread * 1.4, y: cy - 10 * scale },
+      cp2: { x: cx - baseSpread * 0.5, y: apexY + 20 * scale },
+      end: { x: cx, y: apexY },
+      width: 7 * scale,
+    },
+    { // inner left
+      start: { x: cx - baseSpread * 0.65, y: baseY - 10 * scale },
+      cp1: { x: cx - baseSpread * 0.9, y: cy + 10 * scale },
+      cp2: { x: cx - baseSpread * 0.3, y: apexY + 10 * scale },
+      end: { x: cx, y: apexY },
+      width: 6 * scale,
+    },
+    { // center — strongest
+      start: { x: cx, y: baseY + 10 * scale },
+      cp1: { x: cx - 5 * scale, y: cy + 20 * scale },
+      cp2: { x: cx + 3 * scale, y: cy - 40 * scale },
+      end: { x: cx, y: apexY },
+      width: 8.5 * scale,
+    },
+    { // inner right
+      start: { x: cx + baseSpread * 0.65, y: baseY - 10 * scale },
+      cp1: { x: cx + baseSpread * 0.9, y: cy + 10 * scale },
+      cp2: { x: cx + baseSpread * 0.3, y: apexY + 10 * scale },
+      end: { x: cx, y: apexY },
+      width: 6 * scale,
+    },
+    { // far right
+      start: { x: cx + baseSpread * 1.1, y: baseY },
+      cp1: { x: cx + baseSpread * 1.4, y: cy - 10 * scale },
+      cp2: { x: cx + baseSpread * 0.5, y: apexY + 20 * scale },
+      end: { x: cx, y: apexY },
+      width: 7 * scale,
+    },
+  ];
+
+  // Apply subtle animation
+  const breathe = Math.sin(time * 0.002) * 3 * scale;
+
+  // Draw arcs
+  arcs.forEach((arc, i) => {
+    const grad = ctx.createLinearGradient(arc.start.x, arc.start.y, arc.end.x, arc.end.y);
+    grad.addColorStop(0, c.arcs[i][0]);
+    grad.addColorStop(1, c.arcs[i][1]);
+
+    ctx.beginPath();
+    ctx.moveTo(arc.start.x, arc.start.y + breathe * (i === 2 ? 0.5 : 1));
+    ctx.bezierCurveTo(
+      arc.cp1.x, arc.cp1.y + breathe * 0.3,
+      arc.cp2.x, arc.cp2.y - breathe * 0.2,
+      arc.end.x, arc.end.y
+    );
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = arc.width;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+  });
+
+  // Connection nodes (intelligence points) — BOLD
+  const nodes = [
+    { x: cx - 60 * scale, y: cy + 20 * scale, r: 4 * scale, a: 0.6 },
+    { x: cx - 30 * scale, y: cy - 25 * scale, r: 3.5 * scale, a: 0.7 },
+    { x: cx + 5 * scale, y: cy + 5 * scale, r: 4 * scale, a: 0.65 },
+    { x: cx + 35 * scale, y: cy - 20 * scale, r: 3.5 * scale, a: 0.7 },
+    { x: cx + 60 * scale, y: cy + 25 * scale, r: 4 * scale, a: 0.6 },
+  ];
+
+  // Node connections — stronger
+  ctx.lineWidth = 1.5 * scale;
+  for (let i = 0; i < nodes.length - 1; i++) {
+    const n1 = nodes[i], n2 = nodes[i + 1];
+    ctx.beginPath();
+    ctx.moveTo(n1.x, n1.y);
+    const cpx = (n1.x + n2.x) / 2;
+    const cpy = (n1.y + n2.y) / 2 - 15 * scale;
+    ctx.quadraticCurveTo(cpx, cpy, n2.x, n2.y);
+    ctx.strokeStyle = c.glow + '0.25)';
+    ctx.stroke();
+  }
+
+  // Draw nodes — with glow halos
+  nodes.forEach(n => {
+    const pulse = Math.sin(time * 0.003 + n.x) * 0.1;
+    // Halo
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, n.r * 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = c.glow + '0.08)';
+    ctx.fill();
+    // Core
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+    ctx.fillStyle = c.node;
+    ctx.globalAlpha = n.a + pulse;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  });
+
+  // Apex glow — MUCH BIGGER & BRIGHTER
+  const glowR = (30 + Math.sin(time * 0.003) * 5) * scale;
+  const radGrad = ctx.createRadialGradient(cx, apexY, 0, cx, apexY, glowR);
+  radGrad.addColorStop(0, c.glow + '0.85)');
+  radGrad.addColorStop(0.25, c.glow + '0.35)');
+  radGrad.addColorStop(0.6, c.glow + '0.1)');
+  radGrad.addColorStop(1, c.glow + '0)');
+  ctx.beginPath();
+  ctx.arc(cx, apexY, glowR, 0, Math.PI * 2);
+  ctx.fillStyle = radGrad;
+  ctx.fill();
+
+  // Apex core — bigger
+  ctx.beginPath();
+  ctx.arc(cx, apexY, 5.5 * scale, 0, Math.PI * 2);
+  ctx.fillStyle = c.apex;
+  ctx.fill();
+}
+
+/* ── ANIMATE HERO LOGO ── */
+(function() {
+  const heroCanvas = document.getElementById('logoCanvas');
+  let time = 0;
+  function animate() {
+    time++;
+    drawConvergenceMark(heroCanvas, { variant: 'dark', time });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+/* ── RENDER ALL STATIC MARKS ── */
+document.querySelectorAll('.logo-mark-sm').forEach(c => {
+  const v = c.dataset.variant === 'light' ? 'light' : c.dataset.variant === 'white' ? 'white' : 'dark';
+  drawConvergenceMark(c, { variant: v, time: 100 });
+});
+document.querySelectorAll('.logo-mark-xs').forEach(c => {
+  const v = c.dataset.variant === 'light' ? 'light' : c.dataset.variant === 'white' ? 'white' : 'dark';
+  drawConvergenceMark(c, { variant: v, time: 100 });
+});
+document.querySelectorAll('.logo-mark-icon').forEach(c => {
+  const v = c.dataset.variant === 'white' ? 'white' : 'dark';
+  drawConvergenceMark(c, { variant: v, time: 100 });
+});
+
+/* ── SCROLL REVEAL ── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IHRAZ — Brand Identity Master Index</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Cairo:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #050505;
+    --deep: #0A0A0A;
+    --surface: #111111;
+    --border: #1A1A1A;
+    --muted: #3A3A3A;
+    --text-primary: #F5F5F0;
+    --text-secondary: #CCCCCC;
+    --text-muted: #999999;
+    --emerald-900: #022C22;
+    --emerald-800: #064E3B;
+    --emerald-700: #047857;
+    --emerald-600: #059669;
+    --emerald-500: #10B981;
+    --emerald-400: #34D399;
+    --emerald-300: #6EE7B7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  .hero {
+    background: linear-gradient(135deg, var(--deep) 0%, var(--emerald-900) 50%, var(--deep) 100%);
+    padding: 80px 60px;
+    text-align: center;
+    border-bottom: 1px solid var(--emerald-800);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .hero h1 span { color: var(--emerald-500); }
+
+  .hero .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .hero .tagline {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+
+  .hero .instructions {
+    display: inline-block;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--emerald-800);
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 0.85rem;
+    color: var(--emerald-400);
+    max-width: 500px;
+  }
+
+  .hero .instructions strong { color: var(--emerald-300); }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+
+  .section-title span { color: var(--emerald-500); }
+
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 32px;
+    max-width: 600px;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--emerald-700), transparent);
+    margin: 48px 0;
+    opacity: 0.5;
+  }
+
+  .asset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+  }
+
+  /* Card as clickable link */
+  a.asset-card {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a.asset-card:hover {
+    border-color: var(--emerald-500);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(16, 185, 129, 0.12);
+  }
+
+  a.asset-card:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.08);
+  }
+
+  a.asset-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--emerald-500);
+    border-radius: 4px 0 0 4px;
+    transition: width 0.3s ease;
+  }
+
+  a.asset-card:hover::before {
+    width: 6px;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .asset-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .download-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--emerald-500);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  a.asset-card:hover .download-icon {
+    background: var(--emerald-500);
+    color: var(--black);
+    transform: translateY(2px);
+  }
+
+  .icon-html { background: rgba(16, 185, 129, 0.15); color: var(--emerald-400); }
+  .icon-svg { background: rgba(52, 211, 153, 0.15); color: var(--emerald-300); }
+  .icon-pptx { background: rgba(239, 68, 68, 0.15); color: #F87171; }
+  .icon-docx { background: rgba(59, 130, 246, 0.15); color: #60A5FA; }
+  .icon-png { background: rgba(168, 85, 247, 0.15); color: #C084FC; }
+  .icon-md { background: rgba(251, 191, 36, 0.15); color: #FCD34D; }
+
+  .asset-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+  }
+
+  .asset-file {
+    font-family: 'Inter', monospace;
+    font-size: 0.75rem;
+    color: var(--emerald-500);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .asset-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .asset-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+  }
+
+  .asset-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .asset-action {
+    font-size: 0.75rem;
+    color: var(--emerald-500);
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  a.asset-card:hover .asset-action {
+    opacity: 1;
+  }
+
+  .tag-core { background: rgba(16, 185, 129, 0.2); color: var(--emerald-400); }
+  .tag-collateral { background: rgba(59, 130, 246, 0.2); color: #60A5FA; }
+  .tag-digital { background: rgba(168, 85, 247, 0.2); color: #C084FC; }
+  .tag-developer { background: rgba(251, 191, 36, 0.2); color: #FCD34D; }
+
+  .stats-bar {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    padding: 30px;
+    background: var(--surface);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+
+  .stat { text-align: center; }
+
+  .stat-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--emerald-500);
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .usage-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-top: 48px;
+  }
+
+  .usage-section h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+    color: var(--emerald-400);
+  }
+
+  .usage-section p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+
+  .usage-section code {
+    background: var(--deep);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: var(--emerald-400);
+  }
+
+  .font-list {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .font-item {
+    background: var(--deep);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 24px;
+    text-align: center;
+    min-width: 160px;
+  }
+
+  .font-item .preview {
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+  }
+
+  .font-item .name {
+    font-size: 0.75rem;
+    color: var(--emerald-500);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .font-item .role {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  .color-swatches {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 6px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+  }
+
+  .footer {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+  }
+
+  .footer .brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    color: var(--emerald-500);
+  }
+
+  /* File type labels */
+  .file-type {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .ft-html { background: rgba(16,185,129,0.2); color: var(--emerald-400); }
+  .ft-svg { background: rgba(52,211,153,0.2); color: var(--emerald-300); }
+  .ft-pptx { background: rgba(239,68,68,0.2); color: #F87171; }
+  .ft-docx { background: rgba(59,130,246,0.2); color: #60A5FA; }
+  .ft-png { background: rgba(168,85,247,0.2); color: #C084FC; }
+  .ft-md { background: rgba(251,191,36,0.2); color: #FCD34D; }
+
+  @media (max-width: 768px) {
+    .hero { padding: 40px 24px; }
+    .hero h1 { font-size: 2.2rem; }
+    .container { padding: 32px 20px; }
+    .asset-grid { grid-template-columns: 1fr; }
+    .stats-bar { flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1><span>IHRAZ</span> Brand Identity</h1>
+  <div class="subtitle">Master Asset Index</div>
+  <div class="tagline">Where Data Converges Into Strategic Advantage</div>
+  <div class="instructions">
+    <strong>Click any asset card</strong> to open or download it directly.<br>
+    Share this folder as-is — all links are relative and self-contained.
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-number">20</div>
+      <div class="stat-label">Total Assets</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">10</div>
+      <div class="stat-label">HTML Components</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">4</div>
+      <div class="stat-label">SVG Vectors</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">6</div>
+      <div class="stat-label">Export Files</div>
+    </div>
+  </div>
+
+  <!-- CORE IDENTITY -->
+  <h2 class="section-title"><span>01</span> — Core Identity</h2>
+  <p class="section-desc">The foundational brand elements — logo, mark, colors, and comprehensive guidelines.</p>
+
+  <div class="asset-grid">
+    <a class="asset-card" href="IHRAZ_Brand_Identity.html" target="_blank">
+      <div class="card-header">
+        <div class="asset-icon icon-html">&#9678;</div>
+        <div class="download-icon">&#8599;</div>
+      </div>
+      <div class="asset-name">Brand Identity System <span class="file-type ft-html">HTML</span></div>
+      <div class="asset-file">IHRAZ_Brand_Identity.html</div>
+      <div class="asset-desc">The gold standard — interactive Convergence Mark with breathing animation, full color system, typography showcase, and brand philosophy. Open this first.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-core">Core</span>
+        <span class="asset-action">Click to open &#8594;</span>
+      </div>
+    </a>
+
+    <a class="asset-card" href="IHRAZ_Brand_Guidelines.html" target="_blank">
+      <div class="card-header">
+        <div class="asset-icon icon-html">&#9678;</div>
+        <div class="download-icon">&#8599;</div>
+      </div>
+      <div class="asset-name">Brand Guidelines <span class="file-type ft-html">HTML</span></div>
+      <div class="asset-file">IHRAZ_Brand_Guidelines.html</div>
+      <div class="asset-desc">Comprehensive usage rules — logo clear space, minimum sizes, color do/don'ts, typography hierarchy, and brand voice guidelines.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-core">Core</span>
+        <span class="asset-action">Click to open &#8594;</span>
+      </div>
+    </a>
+
+    <a class="asset-card" href="IHRAZ_Brand_One_Pager.html" target="_blank">
+      <div class="card-header">
+        <div class="asset-icon icon-html">&#9678;</div>
+        <div class="download-icon">&#8599;</div>
+      </div>
+      <div class="asset-name">Brand One-Pager <span class="file-type ft-html">HTML</span></div>
+      <div class="asset-file">IHRAZ_Brand_One_Pager.html</div>
+      <div class="asset-desc">Executive summary of the brand — perfect for quick stakeholder alignment. Brand story, values, and key visual elements on one page.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-core">Core</span>
+        <span class="asset-action">Click to open &#8594;</span>
+      </div>
+    </a>
+
+    <a class="asset-card" href="IHRAZ_Logo_Dark.svg" download="IHRAZ_Logo_Dark.svg">
+      <div class="card-header">
+        <div class="asset-icon icon-svg">&#9650;</div>
+        <div class="download-icon">&#8681;</div>
+      </div>
+      <div class="asset-name">Logo — Dark Variant <span class="file-type ft-svg">SVG</span></div>
+      <div class="asset-file">IHRAZ_Logo_Dark.svg</div>
+      <div class="asset-desc">Full wordmark + Convergence Mark. For use on dark backgrounds. Scalable vector format.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-core">Core</span>
+        <span class="asset-action">Click to download &#8595;</span>
+      </div>
+    </a>
+
+    <a class="asset-card" href="IHRAZ_Logo_Light.svg" download="IHRAZ_Logo_Light.svg">
+      <div class="card-header">
+        <div class="asset-icon icon-svg">&#9650;</div>
+        <div class="download-icon">&#8681;</div>
+      </div>
+      <div class="asset-name">Logo — Light Variant <span class="file-type ft-svg">SVG</span></div>
+      <div class="asset-file">IHRAZ_Logo_Light.svg</div>
+      <div class="asset-desc">Full wordmark + Convergence Mark. For use on light backgrounds. Scalable vector format.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-core">Core</span>
+        <span class="asset-action">Click to download &#8595;</span>
+      </div>
+    </a>
+
+    <a class="asset-card" href="IHRAZ_Mark_Dark.svg" download="IHRAZ_Mark_Dark.svg">
+      <div class="card-header">
+        <div class="asset-icon icon-svg">&#9672;</div>
+        <div class="download-icon">&#8681;</div>
+      </div>
+      <div class="asset-name">Convergence Mark — Dark <span class="file-type ft-svg">SVG</span></div>
+      <div class="asset-file">IHRAZ_Mark_Dark.svg</div>
+      <div class="asset-desc">Standalone mark for dark backgrounds — five converging arcs symbolizing unified intelligence. App icons, watermarks, favicons.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-core">Core</span>
+        <span class="asset-action">Click to download &#8595;</span>
+      </div>
+    </a>
+
+    <a class="asset-card" href="IHRAZ_Mark_Light.svg" download="IHRAZ_Mark_Light.svg">
+      <div class="card-header">
+        <div class="asset-icon icon-svg">&#9672;</div>
+        <div class="download-icon">&#8681;</div>
+      </div>
+      <div class="asset-name">Convergence Mark — Light <span class="file-type ft-svg">SVG</span></div>
+      <div class="asset-file">IHRAZ_Mark_Light.svg</div>
+      <div class="asset-desc">Standalone mark for light backgrounds. Same five-arc symbol, adapted for white/light surfaces.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-core">Core</span>
+        <span class="asset-action">Click to download &#8595;</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- DIGITAL ASSETS -->
+  <h2 class="section-title"><span>02</span> — Digital Assets</h2>
+  <p class="section-desc">Icons, favicons, social media kit, and email signatures for digital presence.</p>
+
+  <div class="asset-grid">
+    <a class="asset-card" href="IHRAZ_Icons_Favicons.html" target="_blank">
+      <div class="card-header">
+        <div class="asset-icon icon-html">&#11041;</div>
+        <div class="download-icon">&#8599;</div>
+      </div>
+      <div class="asset-name">Icons & Favicons <span class="file-type ft-html">HTML</span></div>
+      <div class="asset-file">IHRAZ_Icons_Favicons.html</div>
+      <div class="asset-desc">All app icon sizes (512, 192, 180, 128, 96, 48px), brand pattern, document watermark preview, and loading spinner. Canvas-rendered.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-digital">Digital</span>
+        <span class="asset-action">Click to open &#8594;</span>
+      </div>
+    </a>
+
+    <a class="asset-card" href="IHRAZ_Social_Media_Kit.html" target="_blank">
+      <div class="card-header">
+        <div class="asset-icon icon-html">&#9707;</div>
+        <div class="download-icon">&#8599;</div>
+      </div>
+      <div class="asset-name">Social Media Kit <span class="file-type ft-html">HTML</span></div>
+      <div class="asset-file">IHRAZ_Social_Media_Kit.html</div>
+      <div class="asset-desc">Profile avatars, cover images, and post templates sized for LinkedIn, X/Twitter, and other platforms.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-digital">Digital</span>
+        <span class="asset-action">Click to open &#8594;</span>
+      </div>
+    </a>
+
+    <a class="asset-card" href="IHRAZ_Email_Signature.html" target="_blank">
+      <div class="card-header">
+        <div class="asset-icon icon-html">&#9993;</div>
+        <div class="download-icon">&#8599;</div>
+      </div>
+      <div class="asset-name">Email Signature <span class="file-type ft-html">HTML</span></div>
+      <div class="asset-file">IHRAZ_Email_Signature.html</div>
+      <div class="asset-desc">Professional email signature with Convergence Mark, contact details, and brand colors. Copy HTML into your email client.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-digital">Digital</span>
+        <span class="asset-action">Click to open &#8594;</span>
+      </div>
+    </a>
+
+    <a class="asset-card" href="IHRAZ_Watermark.png" download="IHRAZ_Watermark.png">
+      <div class="card-header">
+        <div class="asset-icon icon-png">&#9673;</div>
+        <div class="download-icon">&#8681;</div>
+      </div>
+      <div class="asset-name">Document Watermark <span class="file-type ft-png">PNG</span></div>
+      <div class="asset-file">IHRAZ_Watermark.png</div>
+      <div class="asset-desc">1200x1200px transparent PNG watermark of the Convergence Mark at 22% opacity. Insert into Word/PDF documents.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-digital">Digital</span>
+        <span class="asset-action">Click to download &#8595;</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BUSINESS COLLATERAL -->
+  <h2 class="section-title"><span>03</span> — Business Collateral</h2>
+  <p class="section-desc">Professional documents for day-to-day business operations.</p>
+
+  <div class="asset-grid">
+    <a class="asset-card" href="IHRAZ_Letterhead.html" target="_blank">
+      <div class="card-header">
+        <div class="asset-icon icon-html">&#9636;</div>
+        <div class="download-icon">&#8599;</div>
+      </div>
+      <div class="asset-name">Letterhead <span class="file-type ft-html">HTML</span></div>
+      <div class="asset-file">IHRAZ_Letterhead.html</div>
+      <div class="asset-desc">Professional letterhead with header, footer, and brand typography. The HTML version is the authoritative design — install Syne + Space Grotesk + Cairo fonts for the DOCX version.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-collateral">Collateral</span>
+        <span class="asset-action">Click to open &#8594;</span>
+      </div>
+    </a>
+
+    <a class="asset-card" href="IHRAZ_Letterhead.docx" download="IHRAZ_Letterhead.docx">
+      <div class="card-header">
+        <div class="asset-icon icon-docx">&#9636;</div>
+        <div class="download-icon">&#8681;</div>
+      </div>
+      <div class="asset-name">Letterhead (Word) <span class="file-type ft-docx">DOCX</span></div>
+      <div class="asset-file">IHRAZ_Letterhead.docx</div>
+      <div class="asset-desc">Editable Word version of the letterhead. Requires brand fonts installed on the system for full fidelity.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-collateral">Collateral</span>
+        <span class="asset-action">Click to download &#8595;</span>
+      </div>
+    </a>
+
+    <a class="asset-card" href="IHRAZ_Invoice.html" target="_blank">
+      <div class="card-header">
+        <div class="asset-icon icon-html">&#9639;</div>
+        <div class="download-icon">&#8599;</div>
+      </div>
+      <div class="asset-name">Invoice Template <span class="file-type ft-html">HTML</span></div>
+      <div class="asset-file">IHRAZ_Invoice.html</div>
+      <div class="asset-desc">Professional invoice with dark and light mode toggle. Itemized table, tax calculations, payment terms, and bank details.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-collateral">Collateral</span>
+        <span class="asset-action">Click to open &#8594;</span>
+      </div>
+    </a>
+
+    <a class="asset-card" href="IHRAZ_Business_Cards.html" target="_blank">
+      <div class="card-header">
+        <div class="asset-icon icon-html">&#9638;</div>
+        <div class="download-icon">&#8599;</div>
+      </div>
+      <div class="asset-name">Business Cards <span class="file-type ft-html">HTML</span></div>
+      <div class="asset-file">IHRAZ_Business_Cards.html</div>
+      <div class="asset-desc">Front and back business card designs with Convergence Mark, bilingual support (English/Arabic), and print-ready dimensions.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-collateral">Collateral</span>
+        <span class="asset-action">Click to open &#8594;</span>
+      </div>
+    </a>
+
+    <a class="asset-card" href="IHRAZ_Envelope.html" target="_blank">
+      <div class="card-header">
+        <div class="asset-icon icon-html">&#9637;</div>
+        <div class="download-icon">&#8599;</div>
+      </div>
+      <div class="asset-name">Envelope <span class="file-type ft-html">HTML</span></div>
+      <div class="asset-file">IHRAZ_Envelope.html</div>
+      <div class="asset-desc">Branded envelope design with return address, Convergence Mark, and emerald accent lines.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-collateral">Collateral</span>
+        <span class="asset-action">Click to open &#8594;</span>
+      </div>
+    </a>
+
+    <a class="asset-card" href="IHRAZ_Presentation_Template.pptx" download="IHRAZ_Presentation_Template.pptx">
+      <div class="card-header">
+        <div class="asset-icon icon-pptx">&#9640;</div>
+        <div class="download-icon">&#8681;</div>
+      </div>
+      <div class="asset-name">Presentation Template <span class="file-type ft-pptx">PPTX</span></div>
+      <div class="asset-file">IHRAZ_Presentation_Template.pptx</div>
+      <div class="asset-desc">10-slide world-class presentation deck created in Gamma. Dark theme, emerald accents, bold typography. Fully editable in PowerPoint.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-collateral">Collateral</span>
+        <span class="asset-action">Click to download &#8595;</span>
+      </div>
+    </a>
+
+    <a class="asset-card" href="IHRAZ_Brand_Guidelines.pptx" download="IHRAZ_Brand_Guidelines.pptx">
+      <div class="card-header">
+        <div class="asset-icon icon-pptx">&#9640;</div>
+        <div class="download-icon">&#8681;</div>
+      </div>
+      <div class="asset-name">Brand Guidelines Deck <span class="file-type ft-pptx">PPTX</span></div>
+      <div class="asset-file">IHRAZ_Brand_Guidelines.pptx</div>
+      <div class="asset-desc">10-slide pitch-ready brand identity presentation. Brand story, philosophy, visual identity, color system, typography, logo specs. For stakeholder alignment.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-collateral">Collateral</span>
+        <span class="asset-action">Click to download &#8595;</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- DEVELOPER RESOURCES -->
+  <h2 class="section-title"><span>04</span> — Developer Resources</h2>
+  <p class="section-desc">Technical assets for implementing the brand in code.</p>
+
+  <div class="asset-grid">
+    <a class="asset-card" href="IHRAZ_Lovable_Brand_Prompt.md" download="IHRAZ_Lovable_Brand_Prompt.md">
+      <div class="card-header">
+        <div class="asset-icon icon-md">&#10216;/&#10217;</div>
+        <div class="download-icon">&#8681;</div>
+      </div>
+      <div class="asset-name">Enterprise Frontend Brand Prompt <span class="file-type ft-md">MD</span></div>
+      <div class="asset-file">IHRAZ_Lovable_Brand_Prompt.md</div>
+      <div class="asset-desc">World-class frontend implementation prompt — all surfaces: Admin Dashboard, Customer Portal (co-branded logo upload), Vendor Portal, Learning Center, Reports, Settings, Onboarding. Full design tokens, 30+ components, responsive breakpoints, phased rollout.</div>
+      <div class="asset-meta">
+        <span class="asset-tag tag-developer">Developer</span>
+        <span class="asset-action">Click to download &#8595;</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- QUICK REFERENCE -->
+  <div class="usage-section" style="margin-top: 48px;">
+    <h3>Quick Reference — Brand Foundations</h3>
+
+    <p><strong>Typography</strong></p>
+    <div class="font-list">
+      <div class="font-item">
+        <div class="preview" style="font-family: 'Syne', sans-serif; font-weight: 800;">IHRAZ</div>
+        <div class="name">Syne</div>
+        <div class="role">Display / Headlines</div>
+      </div>
+      <div class="font-item">
+        <div class="preview" style="font-family: 'Space Grotesk', sans-serif;">Grotesk</div>
+        <div class="name">Space Grotesk</div>
+        <div class="role">Body Text</div>
+      </div>
+      <div class="font-item">
+        <div class="preview" style="font-family: 'Cairo', sans-serif; font-weight: 700;">&#1573;&#1581;&#1585;&#1575;&#1586;</div>
+        <div class="name">Cairo</div>
+        <div class="role">Arabic Text</div>
+      </div>
+      <div class="font-item">
+        <div class="preview" style="font-family: 'Inter', sans-serif;">Inter</div>
+        <div class="name">Inter</div>
+        <div class="role">UI / Data</div>
+      </div>
+    </div>
+
+    <p style="margin-top: 24px;"><strong>Color Palette</strong></p>
+    <div class="color-swatches">
+      <div class="swatch" style="background: #0A0A0A; color: #999;">Deep</div>
+      <div class="swatch" style="background: #111111; color: #999;">Surface</div>
+      <div class="swatch" style="background: #064E3B; color: #6EE7B7;">Em-800</div>
+      <div class="swatch" style="background: #059669; color: #FFF;">Em-600</div>
+      <div class="swatch" style="background: #10B981; color: #022C22;">Em-500</div>
+      <div class="swatch" style="background: #34D399; color: #022C22;">Em-400</div>
+      <div class="swatch" style="background: #6EE7B7; color: #022C22;">Em-300</div>
+      <div class="swatch" style="background: #F5F5F0; color: #111;">Text</div>
+    </div>
+
+    <p style="margin-top: 24px;"><strong>Font Installation</strong></p>
+    <p>To ensure all assets render correctly, install these Google Fonts on your system:</p>
+    <p>
+      <code>Syne</code> — <a href="https://fonts.google.com/specimen/Syne" style="color: var(--emerald-400);" target="_blank">fonts.google.com/specimen/Syne</a><br>
+      <code>Space Grotesk</code> — <a href="https://fonts.google.com/specimen/Space+Grotesk" style="color: var(--emerald-400);" target="_blank">fonts.google.com/specimen/Space+Grotesk</a><br>
+      <code>Cairo</code> — <a href="https://fonts.google.com/specimen/Cairo" style="color: var(--emerald-400);" target="_blank">fonts.google.com/specimen/Cairo</a><br>
+      <code>Inter</code> — <a href="https://fonts.google.com/specimen/Inter" style="color: var(--emerald-400);" target="_blank">fonts.google.com/specimen/Inter</a>
+    </p>
+  </div>
+
+  <!-- HOW TO USE THIS INDEX -->
+  <div class="usage-section" style="margin-top: 24px;">
+    <h3>How to Share This Brand Kit</h3>
+    <p>This index is fully self-contained. To share with your team, designers, or external partners:</p>
+    <p><strong>1.</strong> Copy the entire <code>IHRAZ_Identity</code> folder as-is.</p>
+    <p><strong>2.</strong> Send via file share, Google Drive, Dropbox, or any file transfer method.</p>
+    <p><strong>3.</strong> The recipient opens <code>IHRAZ_Master_Index.html</code> in any browser.</p>
+    <p><strong>4.</strong> All links are relative — every asset opens or downloads directly from the same folder.</p>
+    <p style="color: var(--emerald-400); margin-top: 8px;">No server, no hosting, no dependencies. Just the folder and a browser.</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  <span class="brand">IHRAZ</span> — &#1573;&#1581;&#1585;&#1575;&#1586; — Brand Identity System v1.0<br>
+  Saudi Born. Globally Engineered. &nbsp;|&nbsp; March 2026<br>
+  <span style="color: var(--emerald-700);">Where Data Converges Into Strategic Advantage</span>
+</div>
+
+</body>
+</html>

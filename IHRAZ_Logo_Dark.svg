@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" width="900" height="420">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=Cairo:wght@700;900&amp;family=Space+Grotesk:wght@300;400;500&amp;display=swap');
+    </style>
+    <linearGradient id="arc1g" x1="0%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#34D399" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="arc2g" x1="20%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#6EE7B7" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="arc3g" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#34D399" stop-opacity="1.0"/>
+    </linearGradient>
+    <linearGradient id="accentLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+    <radialGradient id="apexGlow">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.85"/>
+      <stop offset="25%" stop-color="#10B981" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#10B981" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nodeGlow">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="420" fill="#050505"/>
+
+  <!-- CONVERGENCE MARK — nested SVG with exact 440×440 canvas coordinates -->
+  <svg x="30" y="30" width="340" height="360" viewBox="30 60 380 320">
+    <!-- Arc 1 (far left) -->
+    <path d="M126.5,315 C101,210 177.5,150 220,130" fill="none" stroke="url(#arc1g)" stroke-width="7" stroke-linecap="round"/>
+    <!-- Arc 2 (inner left) -->
+    <path d="M164.75,305 C143.5,230 194.5,140 220,130" fill="none" stroke="url(#arc2g)" stroke-width="6" stroke-linecap="round"/>
+    <!-- Arc 3 (center) -->
+    <path d="M220,325 C215,240 223,180 220,130" fill="none" stroke="url(#arc3g)" stroke-width="8.5" stroke-linecap="round"/>
+    <!-- Arc 4 (inner right) -->
+    <path d="M275.25,305 C296.5,230 245.5,140 220,130" fill="none" stroke="url(#arc2g)" stroke-width="6" stroke-linecap="round"/>
+    <!-- Arc 5 (far right) -->
+    <path d="M313.5,315 C339,210 262.5,150 220,130" fill="none" stroke="url(#arc1g)" stroke-width="7" stroke-linecap="round"/>
+
+    <!-- Node connections -->
+    <path d="M160,240 Q175,202 190,195" fill="none" stroke="#10B981" stroke-width="1.5" opacity="0.25"/>
+    <path d="M190,195 Q208,195 225,225" fill="none" stroke="#10B981" stroke-width="1.5" opacity="0.25"/>
+    <path d="M225,225 Q240,197 255,200" fill="none" stroke="#10B981" stroke-width="1.5" opacity="0.25"/>
+    <path d="M255,200 Q268,208 280,245" fill="none" stroke="#10B981" stroke-width="1.5" opacity="0.25"/>
+
+    <!-- Node halos + cores -->
+    <circle cx="160" cy="240" r="10" fill="url(#nodeGlow)"/>
+    <circle cx="160" cy="240" r="4" fill="#6EE7B7" opacity="0.6"/>
+    <circle cx="190" cy="195" r="9" fill="url(#nodeGlow)"/>
+    <circle cx="190" cy="195" r="3.5" fill="#6EE7B7" opacity="0.7"/>
+    <circle cx="225" cy="225" r="10" fill="url(#nodeGlow)"/>
+    <circle cx="225" cy="225" r="4" fill="#6EE7B7" opacity="0.65"/>
+    <circle cx="255" cy="200" r="9" fill="url(#nodeGlow)"/>
+    <circle cx="255" cy="200" r="3.5" fill="#6EE7B7" opacity="0.7"/>
+    <circle cx="280" cy="245" r="10" fill="url(#nodeGlow)"/>
+    <circle cx="280" cy="245" r="4" fill="#6EE7B7" opacity="0.6"/>
+
+    <!-- Apex glow + core -->
+    <circle cx="220" cy="130" r="30" fill="url(#apexGlow)"/>
+    <circle cx="220" cy="130" r="5.5" fill="#6EE7B7"/>
+  </svg>
+
+  <!-- TEXT — right side -->
+  <!-- IHRAZ wordmark -->
+  <text x="420" y="160" font-family="'Syne', sans-serif" font-size="72" font-weight="700" fill="#F5F5F0" letter-spacing="14">IHRAZ</text>
+
+  <!-- Accent line -->
+  <rect x="420" y="185" width="160" height="2" rx="1" fill="url(#accentLine)"/>
+
+  <!-- Arabic: إحراز -->
+  <text x="420" y="240" font-family="'Cairo', sans-serif" font-size="44" font-weight="900" fill="#34D399" letter-spacing="3">إحراز</text>
+
+  <!-- Tagline -->
+  <text x="420" y="290" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="400" fill="#999999" letter-spacing="3">ACHIEVE EVERY GOAL  ·  أحرز كل هدف</text>
+
+  <!-- Saudi Born -->
+  <text x="420" y="320" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="500" fill="#10B981" letter-spacing="4">SAUDI BORN · GLOBALLY ENGINEERED</text>
+
+  <!-- Bottom accent line -->
+  <rect x="0" y="416" width="900" height="4" fill="url(#accentLine)" opacity="0.3"/>
+</svg>

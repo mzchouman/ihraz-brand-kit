@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="60 80 320 280" width="320" height="280">
+  <defs>
+    <linearGradient id="la1" x1="0%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#047857" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#064E3B" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="la2" x1="20%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#047857" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="la3" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#022C22" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#064E3B" stop-opacity="1.0"/>
+    </linearGradient>
+    <radialGradient id="lag">
+      <stop offset="0%" stop-color="#047857" stop-opacity="0.85"/>
+      <stop offset="25%" stop-color="#047857" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#047857" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#047857" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lng">
+      <stop offset="0%" stop-color="#047857" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#047857" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <path d="M126.5,315 C101,210 177.5,150 220,130" fill="none" stroke="url(#la1)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M164.75,305 C143.5,230 194.5,140 220,130" fill="none" stroke="url(#la2)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M220,325 C215,240 223,180 220,130" fill="none" stroke="url(#la3)" stroke-width="8.5" stroke-linecap="round"/>
+  <path d="M275.25,305 C296.5,230 245.5,140 220,130" fill="none" stroke="url(#la2)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M313.5,315 C339,210 262.5,150 220,130" fill="none" stroke="url(#la1)" stroke-width="7" stroke-linecap="round"/>
+
+  <path d="M160,240 Q175,202 190,195" fill="none" stroke="#047857" stroke-width="1.5" opacity="0.25"/>
+  <path d="M190,195 Q208,195 225,225" fill="none" stroke="#047857" stroke-width="1.5" opacity="0.25"/>
+  <path d="M225,225 Q240,197 255,200" fill="none" stroke="#047857" stroke-width="1.5" opacity="0.25"/>
+  <path d="M255,200 Q268,208 280,245" fill="none" stroke="#047857" stroke-width="1.5" opacity="0.25"/>
+
+  <circle cx="160" cy="240" r="10" fill="url(#lng)"/><circle cx="160" cy="240" r="4" fill="#047857" opacity="0.6"/>
+  <circle cx="190" cy="195" r="9" fill="url(#lng)"/><circle cx="190" cy="195" r="3.5" fill="#047857" opacity="0.7"/>
+  <circle cx="225" cy="225" r="10" fill="url(#lng)"/><circle cx="225" cy="225" r="4" fill="#047857" opacity="0.65"/>
+  <circle cx="255" cy="200" r="9" fill="url(#lng)"/><circle cx="255" cy="200" r="3.5" fill="#047857" opacity="0.7"/>
+  <circle cx="280" cy="245" r="10" fill="url(#lng)"/><circle cx="280" cy="245" r="4" fill="#047857" opacity="0.6"/>
+
+  <circle cx="220" cy="130" r="30" fill="url(#lag)"/>
+  <circle cx="220" cy="130" r="5.5" fill="#047857"/>
+</svg>
