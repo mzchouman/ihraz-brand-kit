@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IHRAZ Business Card Editor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #050505;
+      --deep: #0A0A0A;
+      --surface: #111111;
+      --border: #1A1A1A;
+      --muted: #3A3A3A;
+      --text-dim: #666666;
+      --text-mid: #999999;
+      --text-light: #CCCCCC;
+      --white: #F5F5F0;
+      --emerald-900: #022C22;
+      --emerald-800: #064E3B;
+      --emerald-700: #047857;
+      --emerald-600: #059669;
+      --emerald-500: #10B981;
+      --emerald-400: #34D399;
+      --emerald-300: #6EE7B7;
+      --emerald-200: #A7F3D0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 2rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--emerald-400);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: var(--emerald-300);
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 60% 40%;
+      gap: 3rem;
+    }
+
+    /* Preview Section */
+    .preview-section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .preview-container {
+      background: var(--deep);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+    }
+
+    .card {
+      width: 630px;
+      height: 360px;
+      border-radius: 8px;
+      padding: 2rem;
+      display: flex;
+      font-family: 'Space Grotesk', sans-serif;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Front Card Variants */
+    .card.front {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card.front.dark {
+      background: var(--deep);
+      border: 1px solid var(--border);
+      color: var(--white);
+    }
+
+    .card.front.light {
+      background: #F8F8F6;
+      border: 1px solid #E5E5E0;
+      color: var(--black);
+    }
+
+    .card.front.emerald {
+      background: linear-gradient(135deg, #047857 0%, #059669 100%);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      color: var(--white);
+    }
+
+    .card-front-left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+    }
+
+    .convergence-mark {
+      width: 80px;
+      height: 70px;
+    }
+
+    .card-front-right {
+      flex: 1;
+      padding-left: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card-brand-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 8px;
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .card-divider {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--emerald-500) 0%, var(--emerald-300) 100%);
+      margin: 0.75rem 0;
+    }
+
+    .card-brand-ar {
+      font-family: 'Cairo', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--emerald-400);
+      margin-bottom: 0.25rem;
+      line-height: 1;
+    }
+
+    .card-tagline {
+      font-size: 9px;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .card-front-website {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-size: 8px;
+      color: var(--emerald-400);
+      letter-spacing: 0.5px;
+    }
+
+    .card.front.light .card-brand-ar,
+    .card.front.light .card-divider {
+      color: var(--emerald-700);
+    }
+
+    .card.front.light .card-front-website {
+      color: var(--emerald-700);
+    }
+
+    /* Back Card */
+    .card.back {
+      background: var(--deep);
+      border: 1px solid var(--border);
+      color: var(--white);
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .card-back-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-back-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .card-back-title {
+      font-size: 10px;
+      color: var(--emerald-500);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .card-divider-back {
+      width: 30px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--emerald-500) 0%, var(--emerald-300) 100%);
+      margin-top: 0.75rem;
+    }
+
+    .card-back-contact {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 10px;
+      color: var(--text-light);
+    }
+
+    .contact-icon {
+      font-size: 12px;
+      color: var(--emerald-400);
+      width: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-back-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      text-align: center;
+      font-size: 7px;
+      color: var(--emerald-500);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .card-back-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--emerald-500) 0%, var(--emerald-300) 100%);
+      border-radius: 0 0 8px 8px;
+    }
+
+    /* Controls Section */
+    .controls-section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .control-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .control-label {
+      font-size: 0.75rem;
+      color: var(--text-mid);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .radio-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+    }
+
+    .radio-item input[type="radio"] {
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
+      accent-color: var(--emerald-500);
+    }
+
+    .radio-item label {
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    input[type="text"] {
+      background: var(--deep);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--emerald-500);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    }
+
+    .export-btn {
+      background: linear-gradient(135deg, var(--emerald-600) 0%, var(--emerald-500) 100%);
+      color: var(--white);
+      border: none;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+    }
+
+    .export-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+    }
+
+    .export-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 630px;
+        height: auto;
+        aspect-ratio: 630 / 360;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .card {
+        width: 100%;
+        padding: 1rem;
+        font-size: 0.9em;
+      }
+
+      .card-brand-name {
+        font-size: 20px;
+        letter-spacing: 4px;
+      }
+
+      .card-brand-ar {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="index.html" class="back-link">← Back to Brand Kit</a>
+      <h1>Business Card Editor</h1>
+    </header>
+
+    <div class="content">
+      <!-- Preview Section -->
+      <div class="preview-section">
+        <div class="preview-container">
+          <div style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%; max-width: 630px;">
+            <!-- Front Card -->
+            <div id="frontCard" class="card front dark">
+              <div class="card-front-left">
+                <svg id="frontMark" class="convergence-mark" xmlns="http://www.w3.org/2000/svg" viewBox="60 80 320 280">
+                  <defs>
+                    <linearGradient id="a1" x1="0%" y1="100%" x2="50%" y2="0%">
+                      <stop offset="0%" stop-color="#10B981" stop-opacity="0.6"/>
+                      <stop offset="100%" stop-color="#34D399" stop-opacity="0.9"/>
+                    </linearGradient>
+                    <linearGradient id="a2" x1="20%" y1="100%" x2="50%" y2="0%">
+                      <stop offset="0%" stop-color="#10B981" stop-opacity="0.7"/>
+                      <stop offset="100%" stop-color="#6EE7B7" stop-opacity="0.95"/>
+                    </linearGradient>
+                    <linearGradient id="a3" x1="50%" y1="100%" x2="50%" y2="0%">
+                      <stop offset="0%" stop-color="#059669" stop-opacity="0.75"/>
+                      <stop offset="100%" stop-color="#34D399" stop-opacity="1.0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M126.5,315 C101,210 177.5,150 220,130" fill="none" stroke="url(#a1)" stroke-width="7" stroke-linecap="round"/>
+                  <path d="M164.75,305 C143.5,230 194.5,140 220,130" fill="none" stroke="url(#a2)" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M220,325 C215,240 223,180 220,130" fill="none" stroke="url(#a3)" stroke-width="8.5" stroke-linecap="round"/>
+                  <path d="M275.25,305 C296.5,230 245.5,140 220,130" fill="none" stroke="url(#a2)" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M313.5,315 C339,210 262.5,150 220,130" fill="none" stroke="url(#a1)" stroke-width="7" stroke-linecap="round"/>
+                  <circle cx="220" cy="130" r="5.5" fill="#6EE7B7"/>
+                </svg>
+              </div>
+              <div class="card-front-right">
+                <div class="card-brand-name">IHRAZ</div>
+                <div class="card-divider"></div>
+                <div class="card-brand-ar">إحراز</div>
+                <div class="card-tagline">Achieve Every Goal</div>
+              </div>
+              <div class="card-front-website">ihraz.ai</div>
+            </div>
+
+            <!-- Back Card -->
+            <div id="backCard" class="card back">
+              <div class="card-back-header">
+                <div class="card-back-name" id="backName">Mohamad-Zouheir Chouman</div>
+                <div class="card-back-title" id="backTitle">Founder & CEO</div>
+                <div class="card-divider-back"></div>
+              </div>
+              <div class="card-back-contact">
+                <div class="contact-item">
+                  <div class="contact-icon">✉</div>
+                  <div id="backEmail">mz@ihraz.ai</div>
+                </div>
+                <div class="contact-item">
+                  <div class="contact-icon">☎</div>
+                  <div id="backPhone">+966 XX XXX XXXX</div>
+                </div>
+                <div class="contact-item">
+                  <div class="contact-icon">🌐</div>
+                  <div id="backWeb">ihraz.ai</div>
+                </div>
+                <div class="contact-item">
+                  <div class="contact-icon">in</div>
+                  <div id="backLinkedin">linkedin.com/in/mzchouman</div>
+                </div>
+              </div>
+              <div class="card-back-footer">Saudi Born · Globally Engineered</div>
+              <div class="card-back-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls Section -->
+      <div class="controls-section">
+        <div class="control-panel">
+          <div class="control-group">
+            <label class="control-label">Front Variant</label>
+            <div class="radio-group">
+              <div class="radio-item">
+                <input type="radio" id="variant-dark" name="variant" value="dark" checked>
+                <label for="variant-dark">Dark</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="variant-light" name="variant" value="light">
+                <label for="variant-light">Light</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="variant-emerald" name="variant" value="emerald">
+                <label for="variant-emerald">Emerald Gradient</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="fullName">Full Name</label>
+            <input type="text" id="fullName" value="Mohamad-Zouheir Chouman">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="title">Title</label>
+            <input type="text" id="title" value="Founder & CEO">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="email">Email</label>
+            <input type="text" id="email" value="mz@ihraz.ai">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="phone">Phone</label>
+            <input type="text" id="phone" value="+966 XX XXX XXXX">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="website">Website</label>
+            <input type="text" id="website" value="ihraz.ai">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="linkedin">LinkedIn</label>
+            <input type="text" id="linkedin" value="linkedin.com/in/mzchouman">
+          </div>
+
+          <button class="export-btn" onclick="exportPDF()">Export Print-Ready PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    // Get all form elements
+    const variantInputs = document.querySelectorAll('input[name="variant"]');
+    const fullNameInput = document.getElementById('fullName');
+    const titleInput = document.getElementById('title');
+    const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
+    const websiteInput = document.getElementById('website');
+    const linkedinInput = document.getElementById('linkedin');
+
+    // Get card elements
+    const frontCard = document.getElementById('frontCard');
+    const backCard = document.getElementById('backCard');
+    const frontMark = document.getElementById('frontMark');
+    const backName = document.getElementById('backName');
+    const backTitle = document.getElementById('backTitle');
+    const backEmail = document.getElementById('backEmail');
+    const backPhone = document.getElementById('backPhone');
+    const backWeb = document.getElementById('backWeb');
+    const backLinkedin = document.getElementById('backLinkedin');
+
+    // Event listeners for variant changes
+    variantInputs.forEach(input => {
+      input.addEventListener('change', (e) => {
+        updateVariant(e.target.value);
+      });
+    });
+
+    // Event listeners for text inputs
+    fullNameInput.addEventListener('input', (e) => {
+      backName.textContent = e.target.value;
+    });
+
+    titleInput.addEventListener('input', (e) => {
+      backTitle.textContent = e.target.value;
+    });
+
+    emailInput.addEventListener('input', (e) => {
+      backEmail.textContent = e.target.value;
+    });
+
+    phoneInput.addEventListener('input', (e) => {
+      backPhone.textContent = e.target.value;
+    });
+
+    websiteInput.addEventListener('input', (e) => {
+      backWeb.textContent = e.target.value;
+    });
+
+    linkedinInput.addEventListener('input', (e) => {
+      backLinkedin.textContent = e.target.value;
+    });
+
+    function updateVariant(variant) {
+      frontCard.classList.remove('dark', 'light', 'emerald');
+      frontCard.classList.add(variant);
+
+      // Update mark SVG colors based on variant
+      if (variant === 'light') {
+        updateMarkForLight();
+      } else {
+        updateMarkForDark();
+      }
+    }
+
+    function updateMarkForLight() {
+      const stops = frontMark.querySelectorAll('stop');
+      const paths = frontMark.querySelectorAll('path');
+      const circle = frontMark.querySelector('circle');
+
+      // Light variant colors: darker emeralds
+      const colorMap = {
+        '#10B981': '#047857',
+        '#34D399': '#064E3B',
+        '#6EE7B7': '#064E3B'
+      };
+
+      paths.forEach(path => {
+        const stroke = path.getAttribute('stroke');
+        if (stroke === 'url(#a1)' || stroke === 'url(#a2)' || stroke === 'url(#a3)') {
+          path.style.stroke = 'url(' + stroke.slice(4, -1) + ')';
+        }
+      });
+
+      // Update gradient stops
+      stops[0].setAttribute('stop-color', '#047857');
+      stops[1].setAttribute('stop-color', '#064E3B');
+      stops[2].setAttribute('stop-color', '#047857');
+      stops[3].setAttribute('stop-color', '#064E3B');
+      stops[4].setAttribute('stop-color', '#047857');
+      stops[5].setAttribute('stop-color', '#064E3B');
+      stops[6].setAttribute('stop-color', '#047857');
+      stops[7].setAttribute('stop-color', '#064E3B');
+      stops[8].setAttribute('stop-color', '#059669');
+      stops[9].setAttribute('stop-color', '#064E3B');
+
+      if (circle) {
+        circle.setAttribute('fill', '#047857');
+      }
+    }
+
+    function updateMarkForDark() {
+      const stops = frontMark.querySelectorAll('stop');
+      const circle = frontMark.querySelector('circle');
+
+      // Dark variant colors: bright emeralds
+      stops[0].setAttribute('stop-color', '#10B981');
+      stops[1].setAttribute('stop-color', '#34D399');
+      stops[2].setAttribute('stop-color', '#10B981');
+      stops[3].setAttribute('stop-color', '#6EE7B7');
+      stops[4].setAttribute('stop-color', '#10B981');
+      stops[5].setAttribute('stop-color', '#6EE7B7');
+      stops[6].setAttribute('stop-color', '#10B981');
+      stops[7].setAttribute('stop-color', '#6EE7B7');
+      stops[8].setAttribute('stop-color', '#059669');
+      stops[9].setAttribute('stop-color', '#34D399');
+
+      if (circle) {
+        circle.setAttribute('fill', '#6EE7B7');
+      }
+    }
+
+    function exportPDF() {
+      const cardContainer = document.querySelector('.preview-container > div');
+      const name = fullNameInput.value.replace(/\s+/g, '_');
+
+      // Clone cards and style for print layout
+      const wrapper = document.createElement('div');
+      wrapper.style.cssText = 'position:fixed;left:0;top:0;z-index:99999;background:#fff;padding:0.75in;width:8.5in;';
+
+      const exportElement = cardContainer.cloneNode(true);
+      exportElement.style.cssText = 'display:flex;flex-direction:column;gap:0.5in;align-items:center;';
+
+      const cards = exportElement.querySelectorAll('.card');
+      cards.forEach(card => {
+        card.style.width = '3.5in';
+        card.style.height = '2in';
+        card.style.padding = '0.2in';
+        card.style.fontSize = '0.85em';
+        card.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+      });
+
+      wrapper.appendChild(exportElement);
+      document.body.appendChild(wrapper);
+
+      // Use standalone html2canvas (not bundled html2pdf) for reliable rendering
+      html2canvas(wrapper, {
+        scale: 3,
+        useCORS: true,
+        backgroundColor: '#FFFFFF',
+        width: wrapper.offsetWidth,
+        height: wrapper.offsetHeight,
+        scrollX: 0,
+        scrollY: 0
+      }).then(canvas => {
+        document.body.removeChild(wrapper);
+
+        const imgData = canvas.toDataURL('image/png', 1.0);
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF({ unit: 'in', format: 'letter', orientation: 'portrait' });
+
+        const pageW = 8.5;
+        const imgH = (canvas.height / canvas.width) * pageW;
+        pdf.addImage(imgData, 'PNG', 0, 0, pageW, imgH);
+        pdf.save(`IHRAZ_Business_Card_${name}.pdf`);
+      });
+    }
+  </script>
+</body>
+</html>
