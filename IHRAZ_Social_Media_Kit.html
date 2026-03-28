@@ -553,6 +553,44 @@
             color: var(--emerald-400);
             font-weight: 600;
         }
+
+        /* Download Button */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--emerald-700), var(--emerald-600));
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid var(--emerald-500);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, var(--emerald-600), var(--emerald-500));
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        .download-btn .btn-icon {
+            font-size: 16px;
+        }
+
+        .download-btn.downloading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -584,6 +622,7 @@
                     <div class="asset-title">LinkedIn Banner</div>
                     <div class="asset-specs">1584 × 396px (displayed: 792 × 198px)</div>
                     <div class="asset-note">Perfect for LinkedIn company profile background. Recommended file format: PNG or SVG.</div>
+                    <button class="download-btn" onclick="downloadAsset(this, '.linkedin-banner', 1584, 396, 'IHRAZ_LinkedIn_Banner')"><span class="btn-icon">&#8595;</span> Download PNG (1584×396)</button>
                 </div>
             </div>
 
@@ -607,6 +646,7 @@
                     <div class="asset-title">Twitter/X Banner</div>
                     <div class="asset-specs">1500 × 500px (displayed: 750 × 250px)</div>
                     <div class="asset-note">Optimized for X profile header. Use centered composition for maximum impact.</div>
+                    <button class="download-btn" onclick="downloadAsset(this, '.twitter-banner', 1500, 500, 'IHRAZ_Twitter_Banner')"><span class="btn-icon">&#8595;</span> Download PNG (1500×500)</button>
                 </div>
             </div>
 
@@ -621,6 +661,7 @@
                     <div class="asset-title">Social Avatar</div>
                     <div class="asset-specs">400 × 400px (displayed: 200 × 200px)</div>
                     <div class="asset-note">Perfect for profile pictures across all social platforms. Keep mark centered within the dashed guide circle.</div>
+                    <button class="download-btn" onclick="downloadAsset(this, '.avatar-container', 400, 400, 'IHRAZ_Social_Avatar')"><span class="btn-icon">&#8595;</span> Download PNG (400×400)</button>
                 </div>
             </div>
 
@@ -650,6 +691,7 @@
                     <div class="asset-title">Instagram Post Template</div>
                     <div class="asset-specs">1080 × 1080px (displayed: 400 × 400px)</div>
                     <div class="asset-note">Use the center area for content. Maintains brand consistency across feed.</div>
+                    <button class="download-btn" onclick="downloadAsset(this, '.instagram-post', 1080, 1080, 'IHRAZ_Instagram_Post')"><span class="btn-icon">&#8595;</span> Download PNG (1080×1080)</button>
                 </div>
             </div>
 
@@ -672,6 +714,7 @@
                     <div class="asset-title">Instagram Story Template</div>
                     <div class="asset-specs">1080 × 1920px (displayed: 225 × 400px)</div>
                     <div class="asset-note">Optimized for vertical story format. Use gradient background for visual appeal.</div>
+                    <button class="download-btn" onclick="downloadAsset(this, '.instagram-story', 1080, 1920, 'IHRAZ_Instagram_Story')"><span class="btn-icon">&#8595;</span> Download PNG (1080×1920)</button>
                 </div>
             </div>
 
@@ -693,6 +736,7 @@
                     <div class="asset-title">Document Cover / Presentation Slide</div>
                     <div class="asset-specs">Full width × 320px (adaptive)</div>
                     <div class="asset-note">Use as first slide cover, document header, or email signature. Can be customized with additional text overlays.</div>
+                    <button class="download-btn" onclick="downloadAsset(this, '.doc-cover', 1920, 420, 'IHRAZ_Document_Cover')"><span class="btn-icon">&#8595;</span> Download PNG (1920×420)</button>
                 </div>
             </div>
         </div>
@@ -700,11 +744,76 @@
 
     <div class="footer">
         <p>IHRAZ Social Media Kit · Premium Brand Assets</p>
-        <p><span class="highlight">Export Guide:</span> Right-click any asset → "Save Image As" or use your browser's print function (Ctrl+P / Cmd+P) to save as PDF for vector output.</p>
+        <p><span class="highlight">Export Guide:</span> Click the "Download PNG" button below any asset to save it at full resolution. Or use your browser's print function (Ctrl+P / Cmd+P) to save as PDF.</p>
         <p style="margin-top: 20px; color: var(--text-dim);">© 2026 IHRAZ · Confidential · All rights reserved</p>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
+        // Download asset as PNG at full resolution
+        async function downloadAsset(btn, selector, targetW, targetH, filename) {
+            const item = btn.closest('.asset-item');
+            const element = item.querySelector(selector);
+            if (!element) return;
+
+            btn.classList.add('downloading');
+            btn.innerHTML = '<span class="btn-icon">&#8987;</span> Rendering...';
+
+            try {
+                // Get the displayed size of the element
+                const rect = element.getBoundingClientRect();
+                const scaleX = targetW / rect.width;
+                const scaleY = targetH / rect.height;
+                const scale = Math.max(scaleX, scaleY);
+
+                const canvas = await html2canvas(element, {
+                    scale: scale,
+                    backgroundColor: '#0A0A0A',
+                    useCORS: true,
+                    allowTaint: true,
+                    logging: false,
+                    width: rect.width,
+                    height: rect.height
+                });
+
+                // Create a final canvas at exact target dimensions
+                const finalCanvas = document.createElement('canvas');
+                finalCanvas.width = targetW;
+                finalCanvas.height = targetH;
+                const ctx = finalCanvas.getContext('2d');
+
+                // Fill with the deep background
+                ctx.fillStyle = '#0A0A0A';
+                ctx.fillRect(0, 0, targetW, targetH);
+
+                // Draw the captured content centered
+                const drawW = canvas.width;
+                const drawH = canvas.height;
+                const fitScale = Math.min(targetW / drawW, targetH / drawH);
+                const dw = drawW * fitScale;
+                const dh = drawH * fitScale;
+                const dx = (targetW - dw) / 2;
+                const dy = (targetH - dh) / 2;
+                ctx.drawImage(canvas, dx, dy, dw, dh);
+
+                // Trigger download
+                const link = document.createElement('a');
+                link.download = filename + '.png';
+                link.href = finalCanvas.toDataURL('image/png');
+                link.click();
+
+                btn.innerHTML = '<span class="btn-icon">&#10003;</span> Downloaded!';
+                setTimeout(() => {
+                    btn.classList.remove('downloading');
+                    btn.innerHTML = '<span class="btn-icon">&#8595;</span> Download PNG (' + targetW + '×' + targetH + ')';
+                }, 2000);
+            } catch(e) {
+                console.error('Download error:', e);
+                btn.innerHTML = '<span class="btn-icon">&#8595;</span> Retry Download';
+                btn.classList.remove('downloading');
+            }
+        }
+
         function drawConvergenceMark(canvas, opts = {}) {
             const ctx = canvas.getContext('2d');
             const W = canvas.width;
